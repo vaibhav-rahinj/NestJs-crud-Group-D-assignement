@@ -4,6 +4,8 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BookModule } from './book/book.module';
 import { ConfigModule } from '@nestjs/config';
+import { UserController } from './user/user.controller';
+import { UserModule } from './user/user.module';
 
 
 @Module({
@@ -20,9 +22,10 @@ import { ConfigModule } from '@nestjs/config';
       autoLoadEntities: true,
       synchronize: true,
     }),
-      BookModule
+      BookModule,
+      UserModule
     ],
-  controllers: [AppController],
+  controllers: [AppController, UserController],
   providers: [AppService],
 })
 export class AppModule {}
