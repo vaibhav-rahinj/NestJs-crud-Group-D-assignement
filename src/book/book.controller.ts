@@ -17,6 +17,12 @@ export class BookController {
         return this.bookService.findAllBooks();
     }
 
+    @Get(':id')
+    // getSpecificStudent(@Param('id') id:number): Book {
+    getSpecificStudent(@Param('id') id:number): Observable<Book> {
+      return this.bookService.getSpecificBook(id);
+    }
+
     @Put(':id')
     updatePut(
         @Param('id') id:number,
