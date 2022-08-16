@@ -19,8 +19,19 @@ export class BookController {
 
     @Get(':id')
     // getSpecificStudent(@Param('id') id:number): Book {
-    getSpecificStudent(@Param('id') id:number): Observable<Book> {
-      return this.bookService.getSpecificBook(id);
+    getSpecificBookId(@Param('id') id:number): Observable<Book> {
+      return this.bookService.getSpecificBookId(id);
+    }
+
+    @Get('name/:name')
+    // getSpecificStudent(@Param('id') id:number): Book {
+    getSpecificBookName(@Param('name') name:string): Observable<Book> {
+      return this.bookService.getSpecificBookName(name);
+    }
+
+    @Get('price/:price')
+    getSpecificBookPrice(@Param('price') price:number): Observable<Book> {
+      return this.bookService.getSpecificBookPrice(price);
     }
 
     @Put(':id')
@@ -28,7 +39,7 @@ export class BookController {
         @Param('id') id:number,
         @Body() book: Book 
     ): Observable<UpdateResult> {
-        return this.bookService.updatePutBook(id,book)
+        return this.bookService.updatePutBook(id,book);
     }
 
     @Patch(':id')

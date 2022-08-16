@@ -20,11 +20,27 @@ export class BookService {
         return from(this.bookRepository.find());
     }
 
-    // getSpecificBook(id:number): Book {
-    getSpecificBook(id:number): Observable<Book> {
+    
+    getSpecificBookId(id:number): Observable<Book> {
         // return from(this.bookRepository.find(id));
         const book_id = id;
         return from(this.bookRepository.findOneBy({book_id}));
+        // return from(this.bookRepository.find({book_id}));
+
+    }
+
+    getSpecificBookName(name:string): Observable<Book> {
+        const book_name = name;
+        // return from(this.bookRepository.findOneBy({book_name}));
+        // return from(this.bookRepository.findBy({book_name}));
+        return from(this.bookRepository.findOneBy({book_name}));
+
+    }
+
+    getSpecificBookPrice(book_price:number): Observable<Book> {
+        const price:number = book_price;
+            return from(this.bookRepository.findOneBy({price}));
+        // return from(this.bookRepository.findOneBy({price}));
     }
 
     updatePutBook(id: number, book: Book): Observable<UpdateResult>{
