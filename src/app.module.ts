@@ -10,6 +10,7 @@ import { StudentModule } from './student/student.module';
 import { StudentController } from './student/controller/student.controller';
 
 
+
 @Module({
   imports: [
     ConfigModule.forRoot({isGlobal:true}),
