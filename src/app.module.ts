@@ -52,7 +52,7 @@ import { StudentModule } from './student/student.module';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: false,
     }),
     BookModule,
     UserModule,
