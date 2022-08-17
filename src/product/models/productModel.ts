@@ -7,6 +7,7 @@ export class CreateUserModel{
     @IsString()
     productName:string;
 
+
     @IsNotEmpty()
     @IsInt()
     price:number;
