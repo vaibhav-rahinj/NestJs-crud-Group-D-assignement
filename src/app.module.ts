@@ -4,17 +4,14 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BookModule } from './book/book.module';
 import { ConfigModule } from '@nestjs/config';
-import { UserController } from './user/user.controller';
+// import { UserController } from './user/user.controller';
 import { UserModule } from './user/user.module';
 import { StudentModule } from './student/student.module';
-import { StudentController } from './student/controller/student.controller';
-import { StudentService } from './student/services/student.service';
-
 
 
 @Module({
   imports: [
-    ConfigModule.forRoot({isGlobal:true}),
+    ConfigModule.forRoot({ isGlobal: true }),
     // ConfigModule.forRoot({isGlobal:true}),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -26,11 +23,11 @@ import { StudentService } from './student/services/student.service';
       autoLoadEntities: true,
       synchronize: true,
     }),
-      BookModule,
-      UserModule,
-      StudentModule
-    ],
+    BookModule,
+    UserModule,
+    StudentModule,
+  ],
   controllers: [AppController],
-  providers: [AppService]
+  providers: [AppService],
 })
 export class AppModule {}
