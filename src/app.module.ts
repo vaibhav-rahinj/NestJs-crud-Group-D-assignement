@@ -6,7 +6,9 @@ import { BookModule } from './book/book.module';
 import { ConfigModule } from '@nestjs/config';
 import { UserController } from './user/user.controller';
 import { UserModule } from './user/user.module';
-// import { BookController } from './book/book.controller';
+import { StudentModule } from './student/student.module';
+import { StudentController } from './student/controller/student.controller';
+
 
 
 @Module({
@@ -24,9 +26,10 @@ import { UserModule } from './user/user.module';
       synchronize: true,
     }),
       BookModule,
-      UserModule
+      UserModule,
+      StudentModule
     ],
-  controllers: [AppController, UserController],
+  controllers: [AppController, UserController,StudentController],
   providers: [AppService],
 })
 export class AppModule {}
