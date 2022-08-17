@@ -4,7 +4,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 export class UserPostEntity{
 
     @PrimaryGeneratedColumn()
-    Id:number;
+    User_Id:number;
 
     @Column()
     User_Name?:string;
