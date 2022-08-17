@@ -4,10 +4,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BookModule } from './book/book.module';
 import { ConfigModule } from '@nestjs/config';
-import { UserController } from './user/user.controller';
+// import { UserController } from './user/user.controller';
 import { UserModule } from './user/user.module';
 import { StudentModule } from './student/student.module';
-import { StudentController } from './student/controller/student.controller';
+// import { StudentController } from './student/controller/student.controller';
 
 
 
@@ -29,7 +29,7 @@ import { StudentController } from './student/controller/student.controller';
       UserModule,
       StudentModule
     ],
-  controllers: [AppController, UserController,StudentController],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
