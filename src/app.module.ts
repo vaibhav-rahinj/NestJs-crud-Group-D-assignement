@@ -32,7 +32,6 @@
 //   controllers: [AppController],
 import { BookModule } from './book/book.module';
 import { ConfigModule } from '@nestjs/config';
-import { UserController } from './user/user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { AppService } from './app.service';
@@ -40,8 +39,6 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { EmpCrudModule } from './emp-crud/emp-crud.module';
 import { StudentModule } from './student/student.module';
-// import { StudentController } from './student/controller/student.controller';
-// import { EmpCrudController } from './emp-crud/controller/emp-crud.controller';
 
 @Module({
   imports: [
@@ -60,7 +57,7 @@ import { StudentModule } from './student/student.module';
     BookModule,
     UserModule,
     StudentModule,
-    EmpCrudModule,
+    EmpCrudModule
   ],
   controllers: [AppController],
   providers: [AppService],
