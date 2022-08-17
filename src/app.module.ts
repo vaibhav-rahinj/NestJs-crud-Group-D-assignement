@@ -7,12 +7,10 @@ import { ConfigModule } from '@nestjs/config';
 import { UserController } from './user/user.controller';
 import { UserModule } from './user/user.module';
 import { StudentModule } from './student/student.module';
-import { StudentController } from './student/controller/student.controller';
-
 
 @Module({
   imports: [
-    ConfigModule.forRoot({isGlobal:true}),
+    ConfigModule.forRoot({ isGlobal: true }),
     // ConfigModule.forRoot({isGlobal:true}),
     TypeOrmModule.forRoot({
       type: 'postgres',
@@ -24,11 +22,11 @@ import { StudentController } from './student/controller/student.controller';
       autoLoadEntities: true,
       synchronize: true,
     }),
-      BookModule,
-      UserModule,
-      StudentModule
-    ],
-  controllers: [AppController, UserController,StudentController],
+    BookModule,
+    UserModule,
+    StudentModule,
+  ],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
