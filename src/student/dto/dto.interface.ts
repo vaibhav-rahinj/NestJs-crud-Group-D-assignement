@@ -1,5 +1,5 @@
 export interface StudentInterface {
-  id?: number;
+  id?:number;
   fname?: string;
   lname?: string;
   Stud_email?: string;

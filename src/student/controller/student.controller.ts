@@ -16,13 +16,13 @@ import { StudentService } from '../services/student.service';
 @Controller('student')
 export class StudentController {
   constructor(private studentService: StudentService) {}
-  @Post() create(
+  @Post('stdCreate') create(
     @Body() studentPost: StudentInterface,
   ): Observable<StudentInterface> {
     return this.studentService.createPost(studentPost);
   }
 
-  @Get() findAll(): Observable<StudentInterface[]> {
+  @Get('stddata') findAll(): Observable<StudentInterface[]> {
     return this.studentService.findAllPosts();
   }
 

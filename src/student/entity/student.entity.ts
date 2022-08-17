@@ -1,8 +1,10 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+
 @Entity('student1')
 export class student {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: number;
+
   @Column({ default: '' })
   fname: string;
 
@@ -14,6 +16,9 @@ export class student {
 
   @Column()
   Stud_gender: string;
+
+  // @Column()
+  // Stud_image:string;
 
   @Column()
   Stud_address: string;

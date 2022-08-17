@@ -57,7 +57,7 @@ import { StudentModule } from './student/student.module';
     BookModule,
     UserModule,
     StudentModule,
-    EmpCrudModule
+    EmpCrudModule,
   ],
   controllers: [AppController],
   providers: [AppService],
