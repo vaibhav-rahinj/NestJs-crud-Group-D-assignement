@@ -1,4 +1,4 @@
-export interface UserPost{
+export interface User{
     Id?: number;
     User_Name?:string;
     Email?:string;
