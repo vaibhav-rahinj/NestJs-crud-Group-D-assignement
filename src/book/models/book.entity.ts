@@ -1,39 +1,40 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
 import { IsNotEmpty, IsString, IsInt} from "class-validator";
+// import { Factory } from 'nestjs-seeder';
 // import {IsNotEmpty} from "@nestjs/common";
 
-@Entity('book_detail')
+@Entity('book_detail1')
 export class BookEntity {
     @PrimaryGeneratedColumn()
-    @IsInt()
+    // @IsInt()
     book_id: number;
 
     @Column({default: ''})
-    @IsNotEmpty()
-    @IsString()
+    // @IsNotEmpty()
+    // @IsString()
     book_name: string;
 
     @Column()
-    @IsNotEmpty()
+    // @IsNotEmpty()
+    // @isNaN()
     author: string;
 
     @Column()
-    @IsNotEmpty()
-    @IsInt()
+    // @IsNotEmpty()
+    // @IsInt()
     price: number;
 
     @Column()
-    @IsNotEmpty()
-    @IsString()
+    // @IsNotEmpty()
+    // @IsString()
+    // // @Factory(faker => faker.image.imageUrl())
     book_image: string;
 
     @Column()
-    @IsNotEmpty()
-    @IsString()
+    // @IsNotEmpty()
+    // @IsString()
     book_isbn: string;
 }
 
-// function IsNotEmpty() {
-//     throw new Error("Function not implemented.");
-// }
+
