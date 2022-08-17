@@ -4,7 +4,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { BookModule } from './book/book.module';
 import { ConfigModule } from '@nestjs/config';
-import { UserController } from './user/user.controller';
+// import { UserController } from './user/user.controller';
 import { UserModule } from './user/user.module';
 import { StudentModule } from './student/student.module';
 
@@ -22,6 +22,7 @@ import { StudentModule } from './student/student.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
+
     BookModule,
     UserModule,
     StudentModule,
