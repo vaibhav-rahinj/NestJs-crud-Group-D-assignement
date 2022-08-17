@@ -8,6 +8,7 @@ import { UserController } from './user/user.controller';
 import { UserModule } from './user/user.module';
 import { StudentModule } from './student/student.module';
 import { StudentController } from './student/controller/student.controller';
+import { StudentService } from './student/services/student.service';
 
 
 
@@ -29,7 +30,7 @@ import { StudentController } from './student/controller/student.controller';
       UserModule,
       StudentModule
     ],
-  controllers: [AppController, UserController,StudentController],
-  providers: [AppService],
+  controllers: [AppController],
+  providers: [AppService]
 })
 export class AppModule {}
