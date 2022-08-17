@@ -22,7 +22,6 @@ import { StudentModule } from './student/student.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
-
     BookModule,
     UserModule,
     StudentModule,
