@@ -11,20 +11,19 @@ export class EmpCrudService {
     private readonly EmployeePostRepository: Repository<EmpCrudEntity>,
   ) {}
   getemployeeById(id: number): Observable<EmpCrud> {
-    // const student_id = id;
     return from(this.EmployeePostRepository.findOneBy({ id }));
   }
-  createPost(studentPost: EmpCrud): Observable<EmpCrud> {
-    return from(this.EmployeePostRepository.save(studentPost));
+  createPost(employeePost: EmpCrud): Observable<EmpCrud> {
+    return from(this.EmployeePostRepository.save(employeePost));
   }
   findAllPosts(): Observable<EmpCrud[]> {
     return from(this.EmployeePostRepository.find());
   }
-  updatePutPost(id: number, studentPost: EmpCrud): Observable<UpdateResult> {
-    return from(this.EmployeePostRepository.update(id, studentPost));
+  updatePutPost(id: number, employeePost: EmpCrud): Observable<UpdateResult> {
+    return from(this.EmployeePostRepository.update(id, employeePost));
   }
-  updatePatchPost(id: number, studentPost: EmpCrud): Observable<UpdateResult> {
-    return from(this.EmployeePostRepository.update(id, studentPost));
+  updatePatchPost(id: number, employeePost: EmpCrud): Observable<UpdateResult> {
+    return from(this.EmployeePostRepository.update(id, employeePost));
   }
   deletePost(id: number): Observable<DeleteResult> {
     return from(this.EmployeePostRepository.delete(id));
