@@ -1,10 +1,10 @@
 export interface User{
-    Id?: number;
+    User_Id?: number;
     User_Name?:string;
     Email?:string;
     Roles?: string;
     Gender?: string;
-    Mobile_no?:number;
+    // Mobile_no?: BigInt;
     State?:string;
     Country?:string;
 
