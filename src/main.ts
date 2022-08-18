@@ -1,6 +1,24 @@
 
+
+// import { ValidationPipe } from '@nestjs/common';
+// import { NestFactory } from '@nestjs/core';
+// import { AppModule } from './app.module';
+
+// async function bootstrap() {
+//   const app = await NestFactory.create(AppModule);
+//   app.useGlobalPipes(new ValidationPipe({
+//     disableErrorMessages:false,
+//     whitelist:true,
+//     forbidNonWhitelisted:true
+//   }))
+//   // app.setGlobalPrefix('book');
+//   await app.listen(3003);
+// }
+// bootstrap();
+
 import { ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+
 import { AppModule } from './app.module';
 
 async function bootstrap() {
@@ -10,8 +28,9 @@ async function bootstrap() {
     whitelist:true,
     forbidNonWhitelisted:true
   }))
+
   // app.setGlobalPrefix('book');
-  await app.listen(3003);
+  await app.listen(4000);
 }
 bootstrap();
 
@@ -29,6 +48,18 @@ bootstrap();
 //     .build();
 //   const document = SwaggerModule.createDocument(app, config);
 //   SwaggerModule.setup('api', app, document);
+
+  // const config = new DocumentBuilder()
+  //   .setTitle('Book Management')
+  //   .setDescription('Add show Edit Delete -> Book data')
+  //   .setVersion('1.0')
+  //   .addTag('Group D Assignment')
+  //   .build();
+  // const document = SwaggerModule.createDocument(app, config);
+  // SwaggerModule.setup('api', app, document);
+
+
+
 
 
   //  const config = new DocumentBuilder()
