@@ -1,4 +1,4 @@
-import { IsInt, IsNotEmpty, IsString } from "class-validator";
+// import { IsInt, IsNotEmpty, IsString } from "class-validator";
 
 export class PatchBook {
     // constructor(parameters) {
@@ -7,22 +7,22 @@ export class PatchBook {
 
     // @IsNotEmpty() @IsInt() book_id?: number;
     // @IsNotEmpty() 
-    @IsString()
+    // @IsString()
      book_name?: string;
 
     // @IsNotEmpty() 
-    @IsString() 
+    // @IsString() 
     author?: string;
 
     // @IsNotEmpty() 
-    @IsInt() 
+    // @IsInt() 
     price?: number;
 
     // @IsNotEmpty() 
-    @IsString() 
+    // @IsString() 
     book_image?: string;
 
     // @IsNotEmpty() 
-    @IsString()
+    // @IsString()
     book_isbn?: string;
 }
