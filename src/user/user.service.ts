@@ -4,6 +4,7 @@ import { from, Observable } from 'rxjs';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { UserPostEntity } from './models/post.entity';
 import { User } from './models/post.interface';
+import { ValidateUser } from './models/user.validation';
 
 @Injectable()
 export class UserService {
@@ -12,7 +13,7 @@ export class UserService {
         private readonly userPostRepository:Repository<UserPostEntity>
     ){}
 
-    createUser(users: User): Observable<User>{
+    createUser(users: ValidateUser): Observable<User>{
         return from(this.userPostRepository.save(users));
     }
 
@@ -25,11 +26,11 @@ export class UserService {
         return from(this.userPostRepository.findOneBy({User_Id}));
     }
 
-    updateUser(id:number, users:User): Observable<UpdateResult>{
+    updateUser(id:number, users:ValidateUser): Observable<UpdateResult>{
         return from(this.userPostRepository.update(id, users));
     }
    
-    updatePatchUser(id: number,users:User): Observable<UpdateResult> {
+    updatePatchUser(id: number,users:ValidateUser): Observable<UpdateResult> {
         return from(this.userPostRepository.update(id, users));
       }
 

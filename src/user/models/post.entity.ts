@@ -7,24 +7,24 @@ export class UserPostEntity{
     User_Id:number;
 
     @Column()
-    User_Name?:string;
+    User_Name:string;
 
     @Column()
-    Email?:string;
+    Email:string;
 
     @Column()
-    Roles?: string;
+    Roles: string;
 
     @Column()
-    Gender?: string;
+    Gender: string;
 
     // @Column()
-    // Mobile_no?:BigInt;
+    // Mobile_no:BigInt;
 
     @Column()
-    State?:string;
+    State:string;
 
     @Column()
-    Country?:string;
+    Country:string;
     
 }
