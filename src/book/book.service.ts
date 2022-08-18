@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UploadedFile } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { from, Observable } from 'rxjs';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
@@ -10,6 +10,7 @@ import { PatchBook } from './models/book.patch';
 
 @Injectable()
 export class BookService {
+    imagepath: string;
     constructor (
         @InjectRepository(BookEntity)
         private readonly bookRepository: Repository<BookEntity>
@@ -21,9 +22,19 @@ export class BookService {
     //     // return from(this.bookRepository.save(book));
     // }
 
+    // handleupload(@UploadedFile() image:Express.Multer.File){
+    //     this.imagepath = image.path;
+    //     console.log('image', image); 
+    //     console.log('path',image.path);
+        
+    //     return "file upload API";
+    //   }
+
     addBook(bookModel: BookModel): Observable<Book> {
-        // return from(this.bookRepository.save(bookModel));
         return from(this.bookRepository.save(bookModel));
+        // return from(this.bookRepository.save(bookModel,bookModel.book_image=this.imagepath));
+        // return from(this.bookRepository.save(bookModel.book_image=this.imagepath));
+
     }
 
     findAllBooks(): Observable<Book[]> {
@@ -46,6 +57,11 @@ export class BookService {
     getSpecificBookAuthor(author:string): Observable<Book> {
         // const author ;
         return from(this.bookRepository.findOneBy({author}));
+    }
+
+    getSpecificBookImage(bimg:string): Observable<Book> {
+        const book_image= bimg;
+        return from(this.bookRepository.findOneBy({book_image}));
     }
 
     getSpecificBookISBN(bisbn:string): Observable<Book> {
