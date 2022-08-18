@@ -18,8 +18,8 @@ export class UserPostEntity{
     @Column()
     Gender?: string;
 
-    @Column()
-    Mobile_no?:number;
+    // @Column()
+    // Mobile_no?:BigInt;
 
     @Column()
     State?:string;

@@ -1,8 +1,8 @@
-import { Body, Controller, Get, Param, Post, Put } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Put } from '@nestjs/common';
 import { User } from './models/post.interface';
 import { UserService } from './user.service';
 import { Observable } from 'rxjs';
-import { UpdateResult } from 'typeorm';
+import { DeleteResult, UpdateResult } from 'typeorm';
 
 @Controller('user')
 export class UserController {
@@ -23,9 +23,19 @@ export class UserController {
     }
 
     @Put(':id')
-    update(@Param('id') id:number, @Body() users:User ):Observable<UpdateResult>{
+    updatePut(@Param('id') id:number, @Body() users:User ):Observable<UpdateResult>{
         return this.userService.updateUser(id, users)
     }
 
+    @Patch(':id') 
+    updatePatch(
+        @Param('id') id: number,
+        @Body() users:User): Observable<UpdateResult> {
+        return this.userService.updatePatchUser(id, users);
+      }
    
+      @Delete(':id') 
+      delete(@Param('id') id: number): Observable<DeleteResult> {
+        return this.userService.deleteUser(id);
+      }
 }
