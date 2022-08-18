@@ -4,7 +4,7 @@ export interface User{
     Email?:string;
     Roles?: string;
     Gender?: string;
-    // Mobile_no?: BigInt;
+    // Mobile_no?: number;
     State?:string;
     Country?:string;
 

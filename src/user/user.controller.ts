@@ -3,12 +3,13 @@ import { User } from './models/post.interface';
 import { UserService } from './user.service';
 import { Observable } from 'rxjs';
 import { DeleteResult, UpdateResult } from 'typeorm';
+import { ValidateUser } from './models/user.validation';
 
 @Controller('user')
 export class UserController {
     constructor(private userService: UserService){}
     @Post()
-    create(@Body() users:User): Observable<User>{
+    create(@Body() users:ValidateUser): Observable<User>{
         return this.userService.createUser(users)
     }
     
@@ -23,14 +24,14 @@ export class UserController {
     }
 
     @Put(':id')
-    updatePut(@Param('id') id:number, @Body() users:User ):Observable<UpdateResult>{
+    updatePut(@Param('id') id:number, @Body() users:ValidateUser ):Observable<UpdateResult>{
         return this.userService.updateUser(id, users)
     }
 
     @Patch(':id') 
     updatePatch(
         @Param('id') id: number,
-        @Body() users:User): Observable<UpdateResult> {
+        @Body() users:ValidateUser): Observable<UpdateResult> {
         return this.userService.updatePatchUser(id, users);
       }
    
