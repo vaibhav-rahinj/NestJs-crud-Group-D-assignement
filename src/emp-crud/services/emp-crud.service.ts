@@ -4,6 +4,7 @@ import { from, Observable } from 'rxjs';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
 import { EmpCrudEntity } from '../models/post.entity';
 import { EmpCrud } from '../models/postinterface';
+
 @Injectable()
 export class EmpCrudService {
   constructor(
