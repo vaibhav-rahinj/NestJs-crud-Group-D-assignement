@@ -1,10 +1,10 @@
 import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 
-import { IsNotEmpty, IsString, IsInt} from "class-validator";
+// import { IsNotEmpty, IsString, IsInt} from "class-validator";
 // import { Factory } from 'nestjs-seeder';
 // import {IsNotEmpty} from "@nestjs/common";
 
-@Entity('book_detail1')
+@Entity('book_details1')
 export class BookEntity {
     @PrimaryGeneratedColumn()
     // @IsInt()
