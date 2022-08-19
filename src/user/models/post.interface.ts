@@ -5,7 +5,8 @@ export interface User{
     Roles?: string;
     Gender?: string;
     // Mobile_no?: number;
+    // Address?: string;
     State?:string;
     Country?:string;
-
+    User_img?: string;
 }
