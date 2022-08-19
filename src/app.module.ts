@@ -55,7 +55,7 @@ import { MulterModule } from '@nestjs/platform-express';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    
+
     BookModule,
     UserModule,
     StudentModule,

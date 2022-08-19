@@ -1,11 +1,13 @@
+import { validate, IsString } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('student1')
 export class student {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ default: '' })
+  @IsString()
   fname: string;
 
   @Column()
