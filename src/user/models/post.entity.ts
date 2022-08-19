@@ -4,27 +4,27 @@ import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 export class UserPostEntity{
 
     @PrimaryGeneratedColumn()
-    Id:number;
+    User_Id:number;
 
     @Column()
-    User_Name?:string;
+    User_Name:string;
 
     @Column()
-    Email?:string;
+    Email:string;
 
     @Column()
-    Roles?: string;
+    Roles: string;
 
     @Column()
-    Gender?: string;
+    Gender: string;
+
+    // @Column()
+    // Mobile_no:BigInt;
 
     @Column()
-    Mobile_no?:number;
+    State:string;
 
     @Column()
-    State?:string;
-
-    @Column()
-    Country?:string;
+    Country:string;
     
 }
