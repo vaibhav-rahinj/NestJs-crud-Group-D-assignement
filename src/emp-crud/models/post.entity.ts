@@ -1,10 +1,9 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-@Entity('employee')
+@Entity('emp')
 export class EmpCrudEntity {
-  @PrimaryGeneratedColumn('uuid')
+  @PrimaryGeneratedColumn()
   id: number;
-
-  @Column({ default: '' })
+  @Column()
   empFname: string;
   @Column()
   empLname: string;
@@ -14,4 +13,6 @@ export class EmpCrudEntity {
   emp_gender: string;
   @Column()
   emp_address: string;
+  @Column()
+  img: string;
 }

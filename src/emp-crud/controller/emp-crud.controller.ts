@@ -38,6 +38,7 @@ export class EmpCrudController {
   ): Observable<UpdateResult> {
     return this.employeeService.updatePatchPost(id, employeePost);
   }
+
   @Delete(':id') delete(@Param('id') id: number): Observable<DeleteResult> {
     return this.employeeService.deletePost(id);
   }
