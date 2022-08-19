@@ -39,6 +39,7 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { EmpCrudModule } from './emp-crud/emp-crud.module';
 import { StudentModule } from './student/student.module';
+import { MulterModule } from '@nestjs/platform-express';
 
 @Module({
   imports: [
@@ -54,6 +55,7 @@ import { StudentModule } from './student/student.module';
       autoLoadEntities: true,
       synchronize: true,
     }),
+    
     BookModule,
     UserModule,
     StudentModule,
