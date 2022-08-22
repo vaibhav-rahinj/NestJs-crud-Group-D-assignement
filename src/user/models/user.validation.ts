@@ -2,7 +2,7 @@ import {
     IsEmail, IsInt, IsNotEmpty, IsString, }
 from "class-validator";
 export class ValidateUser{
-    @IsNotEmpty() @IsInt() User_Id: number;
+    // @IsNotEmpty() @IsInt() User_Id: number;
     @IsNotEmpty() @IsString() User_Name: string;
     @IsNotEmpty() @IsEmail() Email: string;
     @IsNotEmpty() @IsString() Roles: string;
@@ -12,4 +12,13 @@ export class ValidateUser{
     @IsNotEmpty() @IsString() State: string;
     @IsNotEmpty() @IsString() Country: string;
     @IsNotEmpty() @IsString() User_img: string;
+
+    // User_Id: number;
+    // User_Name: string;
+    // Email: string;
+    // Roles: string;
+    // Gender: string;
+    // State: string;
+    // Country: string;
+    // User_img: string;
 }
