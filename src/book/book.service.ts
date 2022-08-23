@@ -6,6 +6,7 @@ import { BookEntity } from './models/book.entity';
 import { Book } from './models/book.interface';
 import { BookModel } from './models/book.model';
 import { PatchBook } from './models/book.patch';
+import { PutBook } from './models/book.put';
 // import { BookModel } from './models/book.model';
 
 @Injectable()
@@ -74,8 +75,12 @@ export class BookService {
             return from(this.bookRepository.findOneBy({price}));
     }
 
-    updatePutBook(id: number, bookModel: BookModel): Observable<UpdateResult>{
-        return from(this.bookRepository.update(id,bookModel));
+    // updatePutBook(id: number, bookModel: BookModel): Observable<UpdateResult>{
+    //     return from(this.bookRepository.update(id,bookModel));
+    // }
+
+    updatePutBook(id: number, putBook: PutBook): Observable<UpdateResult>{
+        return from(this.bookRepository.update(id,putBook));
     }
 
     updatePatchBook(id: number, patchBook: PatchBook): Observable<UpdateResult>{

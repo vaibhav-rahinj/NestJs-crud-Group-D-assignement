@@ -21,51 +21,71 @@ import { BookService } from './book.service';
 import { Book } from './models/book.interface';
 import { BookModel } from './models/book.model';
 import { PatchBook } from './models/book.patch';
+import { PutBook } from './models/book.put';
 // import {Images} from '../../images';
 
 @Controller('book')
 export class BookController {
   constructor(private bookService: BookService) {}
-   imagepath: string='';
+  //  imagepath: string='';
   @Post()
   // @IsNotEmpty()
   add(@Body() bookModel: BookModel): Observable<Book> {
-    bookModel.book_image=this.imagepath;
+    // bookModel.author="vjvbczh";
+    console.log(bookModel);
+    
+    // bookModel.book_image=this.imagepath;
     return this.bookService.addBook(bookModel);
     // return this.bookService.addBook(bookModel,bookModel.book_image=this.imagepath);
   }
+  // @Post('/:add')
+  // @UseInterceptors(FileInterceptor('image'))
+  // postAdd(@UploadedFile() profilexyz: Array<Express.Multer.File>): object {
+  //   console.log(profilexyz);
+  //   return {
+  //     message: 'file uploaded',
+  //   };
+  // }
 
-  @Post('image')
-  @UseInterceptors(FileInterceptor('image',{
-    storage: diskStorage({
-      destination: './images',
-      filename:(req, image, callback) =>{
-        const uniqueSuffix = Date.now() +'-'+ Math.round(Math.random()*1e9);
-        const ext = extname(image.originalname);
-        // const filename = `${image.originalname}-${uniqueSuffix}${ext}`;
-        const filename = `${uniqueSuffix}${ext}`;
-        callback(null,filename);
-      }
-    }),
-  }),
-  )
-  handleupload(@UploadedFile() image:Express.Multer.File){
-    this.imagepath = image.path;
-    console.log('image', image); 
-    console.log('path',image.path);
+// // post image in db
+//   @Post('image')
+//   @UseInterceptors(FileInterceptor('image',{
+//     storage: diskStorage({
+//       destination: './images',
+//       filename:(req, image, callback) =>{
+//         const uniqueSuffix = Date.now() +'-'+ Math.round(Math.random()*1e9);
+//         const ext = extname(image.originalname);
+//         // const filename = `${image.originalname}-${uniqueSuffix}${ext}`;
+//         const filename = `${uniqueSuffix}${ext}`;
+//         callback(null,filename);
+//       }
+//     }),
+//   }),
+//   )
+//   handleupload(@UploadedFile() image:Express.Multer.File){
+//     this.imagepath = image.path;
+//     console.log('image', image); 
+//     console.log('path',image.path);
+//     console.log(image);
     
-    return "file upload API";
-    // return this.bookService.handleupload(image);
-  }
+//     console.log("file upload API "+this.imagepath);
+//     return this.imagepath;
+//     // return "file upload API "+this.imagepath;
+//     // return this.bookService.handleupload(image);
+//   }
  
-  @Get('showimage/:image')
-  seeUploadedFile(@Param('image') image, @Res() res) {
-    return res.sendFile(image, { root: './images' });
-  }
+  // // image data get 
+  // @Get('images/:image')
+  // // @Get('showimages/:image')
+  // seeUploadedFile(@Param('image') image, @Res() res) {
+  //   return res.sendFile(image, { root: './images' });
+  // }
 
 
   @Get()
   findAllBook(): Observable<Book[]> {
+    console.log("function called");
+    
     return this.bookService.findAllBooks();
   }
 
@@ -89,22 +109,30 @@ export class BookController {
   getSpecificBookPrice(@Param('price') price: number): Observable<Book> {
     return this.bookService.getSpecificBookPrice(price);
   }
-  @Get('bimg/:bimg')
-  getSpecificBookImage(@Param('bimg') bimg: string): Observable<Book> {
-    return this.bookService.getSpecificBookImage(bimg);
-  }
+  // @Get('bimg/:bimg')
+  // getSpecificBookImage(@Param('bimg') bimg: string): Observable<Book> {
+  //   return this.bookService.getSpecificBookImage(bimg);
+  // }
 
   @Get('isbn/:bisbn')
   getSpecificBookISBN(@Param('bisbn') bisbn: string): Observable<Book> {
     return this.bookService.getSpecificBookISBN(bisbn);
   }
 
-  @Put(':id')
+  // @Put('put/:id')
+  // updatePut(
+  //   @Param('id') id: number,
+  //   @Body() bookModel: BookModel,
+  // ): Observable<UpdateResult> {
+  //   return this.bookService.updatePutBook(id, bookModel);
+  // }
+
+  @Put('put/:id')
   updatePut(
     @Param('id') id: number,
-    @Body() bookModel: BookModel,
+    @Body() putBook: PutBook,
   ): Observable<UpdateResult> {
-    return this.bookService.updatePutBook(id, bookModel);
+    return this.bookService.updatePutBook(id, putBook);
   }
 
   // @Patch(':id')
@@ -115,7 +143,7 @@ export class BookController {
   //     return this.bookService.updatePatchBook(id,bookModel)
   // }
 
-  @Patch(':id')
+  @Patch('patch/:id')
   updatePatch(
     @Param('id') id: number,
     @Body() patchBook: PatchBook,
