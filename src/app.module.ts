@@ -55,7 +55,7 @@ import { MulterModule } from '@nestjs/platform-express';
       autoLoadEntities: true,
       synchronize: true,
     }),
-    MulterModule.register({ dest:'./images' }),
+
     BookModule,
     UserModule,
     StudentModule,

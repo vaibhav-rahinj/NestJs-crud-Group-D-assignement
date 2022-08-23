@@ -9,7 +9,7 @@ export class UserPostEntity{
     @Column()
     User_Name:string;
 
-    @Column()
+    @Column({unique: true})
     Email:string;
 
     @Column()
@@ -20,11 +20,16 @@ export class UserPostEntity{
 
     // @Column()
     // Mobile_no:BigInt;
+    
+    // @Column()
+    // Address:string;
 
     @Column()
     State:string;
 
     @Column()
     Country:string;
+    @Column({nullable: true})
+    User_img:string;
     
 }
