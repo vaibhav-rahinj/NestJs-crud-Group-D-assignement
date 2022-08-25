@@ -11,7 +11,7 @@ import { PutBook } from './models/book.put';
 
 @Injectable()
 export class BookService {
-    imagepath: string;
+    // imagepath: string;
     constructor (
         @InjectRepository(BookEntity)
         private readonly bookRepository: Repository<BookEntity>
@@ -30,13 +30,22 @@ export class BookService {
         
     //     return "file upload API";
     //   }
+    
 
-    addBook(bookModel: BookModel): Observable<Book> {
-        return from(this.bookRepository.save(bookModel));
-        // return from(this.bookRepository.save(bookModel,bookModel.book_image=this.imagepath));
-        // return from(this.bookRepository.save(bookModel.book_image=this.imagepath));
+    // addBook(bookModel: BookModel): Observable<Book> {
+    //     return from(this.bookRepository.save(bookModel));
+    //     // return from(this.bookRepository.save(bookModel,bookModel.book_image=this.imagepath));
+    //     // return from(this.bookRepository.save(bookModel.book_image=this.imagepath));
+    // }
 
-    }
+    // trial bookEntity
+    addBook(bookModel: BookModel): Observable<BookEntity> {
+            return from(this.bookRepository.save(bookModel));
+            // return from(this.bookRepository.save(bookModel,bookModel.book_image=this.imagepath));
+            // return from(this.bookRepository.save(bookModel.book_image=this.imagepath));
+        }
+    
+    // trail
 
     findAllBooks(): Observable<Book[]> {
         return from(this.bookRepository.find());

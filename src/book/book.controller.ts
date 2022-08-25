@@ -18,6 +18,7 @@ import { extname } from 'path';
 import { Observable } from 'rxjs';
 import { DeleteResult, UpdateResult } from 'typeorm';
 import { BookService } from './book.service';
+import { BookEntity } from './models/book.entity';
 import { Book } from './models/book.interface';
 import { BookModel } from './models/book.model';
 import { PatchBook } from './models/book.patch';
@@ -30,6 +31,16 @@ export class BookController {
   //  imagepath: string='';
   @Post()
   // @IsNotEmpty()
+  // add(@Body() bookModel: BookModel): Observable<Book> {
+  //   // bookModel.author="vjvbczh";
+  //   console.log(bookModel);
+    
+  //   // bookModel.book_image=this.imagepath;
+  //   return this.bookService.addBook(bookModel);
+  //   // return this.bookService.addBook(bookModel,bookModel.book_image=this.imagepath);
+  // }
+
+  // trial
   add(@Body() bookModel: BookModel): Observable<Book> {
     // bookModel.author="vjvbczh";
     console.log(bookModel);
@@ -38,6 +49,8 @@ export class BookController {
     return this.bookService.addBook(bookModel);
     // return this.bookService.addBook(bookModel,bookModel.book_image=this.imagepath);
   }
+  //trial
+
   // @Post('/:add')
   // @UseInterceptors(FileInterceptor('image'))
   // postAdd(@UploadedFile() profilexyz: Array<Express.Multer.File>): object {
@@ -48,35 +61,35 @@ export class BookController {
   // }
 
 // // post image in db
-//   @Post('image')
-//   @UseInterceptors(FileInterceptor('image',{
-//     storage: diskStorage({
-//       destination: './images',
-//       filename:(req, image, callback) =>{
-//         const uniqueSuffix = Date.now() +'-'+ Math.round(Math.random()*1e9);
-//         const ext = extname(image.originalname);
-//         // const filename = `${image.originalname}-${uniqueSuffix}${ext}`;
-//         const filename = `${uniqueSuffix}${ext}`;
-//         callback(null,filename);
-//       }
-//     }),
-//   }),
-//   )
-//   handleupload(@UploadedFile() image:Express.Multer.File){
-//     this.imagepath = image.path;
-//     console.log('image', image); 
-//     console.log('path',image.path);
-//     console.log(image);
+  // @Post('image')
+  // @UseInterceptors(FileInterceptor('image',{
+  //   storage: diskStorage({
+  //     destination: './images',
+  //     filename:(req, image, callback) =>{
+  //       const uniqueSuffix = Date.now() +'-'+ Math.round(Math.random()*1e9);
+  //       const ext = extname(image.originalname);
+  //       // const filename = `${image.originalname}-${uniqueSuffix}${ext}`;
+  //       const filename = `${uniqueSuffix}${ext}`;
+  //       callback(null,filename);
+  //     }
+  //   }),
+  // }),
+  // )
+  // handleupload(@UploadedFile() image:Express.Multer.File){
+  //   this.imagepath = image.path;
+  //   console.log('image', image); 
+  //   console.log('path',image.path);
+  //   console.log(image);
     
-//     console.log("file upload API "+this.imagepath);
-//     return this.imagepath;
-//     // return "file upload API "+this.imagepath;
-//     // return this.bookService.handleupload(image);
-//   }
+  //   console.log("file upload API "+this.imagepath);
+  //   return this.imagepath;
+  //   // return "file upload API "+this.imagepath;
+  //   // return this.bookService.handleupload(image);
+  // }
  
   // // image data get 
   // @Get('images/:image')
-  // // @Get('showimages/:image')
+  //// @Get('showimages/:image')
   // seeUploadedFile(@Param('image') image, @Res() res) {
   //   return res.sendFile(image, { root: './images' });
   // }
@@ -130,9 +143,9 @@ export class BookController {
   @Put('put/:id')
   updatePut(
     @Param('id') id: number,
-    @Body() putBook: PutBook,
+    @Body() bookModel: BookModel,
   ): Observable<UpdateResult> {
-    return this.bookService.updatePutBook(id, putBook);
+    return this.bookService.updatePutBook(id, bookModel);
   }
 
   // @Patch(':id')
