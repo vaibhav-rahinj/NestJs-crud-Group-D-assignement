@@ -8,5 +8,5 @@ export interface User{
     // Address?: string;
     State?:string;
     Country?:string;
-    User_img?: string;
+    // User_img?: string;
 }

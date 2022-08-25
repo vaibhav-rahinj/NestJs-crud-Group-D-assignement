@@ -19,7 +19,7 @@ export class UserPostEntity{
     Gender: string;
 
     // @Column()
-    // Mobile_no:BigInt;
+    // Mobile_no:BigInteger;
     
     // @Column()
     // Address:string;
@@ -29,7 +29,7 @@ export class UserPostEntity{
 
     @Column()
     Country:string;
-    @Column({nullable: true})
-    User_img:string;
+    // @Column({nullable: true})
+    // User_img:string;
     
 }
