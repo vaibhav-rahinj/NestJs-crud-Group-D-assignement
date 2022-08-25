@@ -1,13 +1,32 @@
-import {  IsInt, IsNotEmpty,  IsString } from 'class-validator';
+import {  IsInt, IsNotEmpty,  IsString, MaxLength, MinLength } from 'class-validator';
 
 export class BookModel {
-  @IsNotEmpty() @IsInt() book_id: number;
-  @IsNotEmpty()  @IsString() book_name: string;
-  @IsNotEmpty() @IsString() author: string;
-  @IsNotEmpty() @IsInt() price: number;
+  @IsNotEmpty() @IsInt()
+  @MinLength(1)
+  @MaxLength(6)
+  book_id: number;
+
+  @IsNotEmpty()  @IsString()
+  @MinLength(3)
+  @MaxLength(30) book_name: string;
+
   @IsNotEmpty() @IsString()
+  @MinLength(3)
+  @MaxLength(30) author: string;
+
+  @IsNotEmpty() @IsInt()
+  @MinLength(2)
+  @MaxLength(6)
+   price: number;
+
+  @IsNotEmpty() @IsString()
+  @MinLength(4)
+  @MaxLength(50)
    book_image: string;
-  @IsNotEmpty() @IsString() book_isbn: string;
+
+  @IsNotEmpty() @IsString()
+  @MinLength(13)
+  @MaxLength(13) book_isbn: string;
 
 
 }

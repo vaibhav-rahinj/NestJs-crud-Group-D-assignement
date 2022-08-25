@@ -1,4 +1,4 @@
-// import { IsInt, IsNotEmpty, IsString } from "class-validator";
+import { IsInt, IsNotEmpty, IsString } from "class-validator";
 
 export interface Book{
     book_id: number;
@@ -8,9 +8,9 @@ export interface Book{
     book_image: string;
     book_isbn: string;
 
-    // @IsNotEmpty() @IsInt() book_id: string;
+    // @IsNotEmpty() @IsInt() book_id: number;
     // @IsNotEmpty() @IsString() book_name: string;
-    // @IsNotEmpty() @IsString() author: number;
+    // @IsNotEmpty() @IsString() author: string;
     // @IsNotEmpty() @IsInt() price: number;
     // @IsNotEmpty() @IsString() book_image: string;
     // @IsNotEmpty() @IsString() book_isbn: string;
