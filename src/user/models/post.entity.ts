@@ -19,6 +19,9 @@ export class UserPostEntity{
     Gender: string;
 
     // @Column()
+    // Date_of_Birth:Date;
+
+    // @Column()
     // Mobile_no:BigInteger;
     
     // @Column()

@@ -1,4 +1,5 @@
 import {
+    IsDate,
     IsEmail, IsNotEmpty, IsString, }
 from "class-validator";
 export class ValidateUser{
@@ -7,6 +8,7 @@ export class ValidateUser{
     @IsNotEmpty() @IsEmail() Email: string;
     @IsNotEmpty() @IsString() Roles: string;
     @IsNotEmpty() @IsString() Gender: string;
+    // @IsNotEmpty() @IsDate() Date_of_Birth: Date;
     // @IsNotEmpty() @IsInt() Mobile_no: number;
     // @IsNotEmpty() @IsString() Address: string;
     @IsNotEmpty() @IsString() State: string;
