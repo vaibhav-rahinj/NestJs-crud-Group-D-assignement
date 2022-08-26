@@ -19,6 +19,7 @@ import { ValidateUser } from './models/user.validation';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import path, { extname } from 'path';
+import { PatchValidateUser } from './models/patchvalidation';
 
 // import { FileInterceptor } from '@nestjs/platform-express';
 
@@ -28,7 +29,7 @@ export class UserController {
   constructor(private userService: UserService) {}
   @Post()
   create(@Body() users: ValidateUser): Observable<User> {
-    users.User_img=this.imagepath;
+    // users.User_img=this.imagepath;
     return this.userService.createUser(users);
   }
 
@@ -53,9 +54,9 @@ export class UserController {
   @Patch(':id')
   updatePatch(
     @Param('id') id: number,
-    @Body() users: ValidateUser,
+    @Body() patchValidateUser: PatchValidateUser,
   ): Observable<UpdateResult> {
-    return this.userService.updatePatchUser(id, users);
+    return this.userService.updatePatchUser(id, patchValidateUser);
   }
 
   @Delete(':id')
@@ -72,32 +73,32 @@ export class UserController {
     //   }
     // }
 
-        @Post('image')
-    @UseInterceptors(
-      FileInterceptor('User_img', {
-        storage: diskStorage({
-          destination: './uploaded_img',
-          filename: (req, image, callback) => {
-            const uniqueSuffix =
-              Date.now() + '-' + Math.round(Math.random() * 1e9);
-            const ext = extname(image.originalname);
-            // const filename = `${image.originalname}-${uniqueSuffix}${ext}`;
-            const filename = `${uniqueSuffix}${ext}`;
-            callback(null, filename);
-          },
-        }),
-      }),
-    )
-    handleupload(@UploadedFile() image: Express.Multer.File) {
-      this.imagepath = image.path;
-      console.log('image', image);
-      console.log('path', image.path);
-      return 'file upload API';
-    }
-    @Get('showimage/:image')
-    seeUploadedFile(@Param('image') image, @Res() res) {
-      return res.sendFile(image, { root: './uploaded_img' });
-    }
+    //     @Post('image')
+    // @UseInterceptors(
+    //   FileInterceptor('User_img', {
+    //     storage: diskStorage({
+    //       destination: './uploaded_img',
+    //       filename: (req, image, callback) => {
+    //         const uniqueSuffix =
+    //           Date.now() + '-' + Math.round(Math.random() * 1e9);
+    //         const ext = extname(image.originalname);
+    //         // const filename = `${image.originalname}-${uniqueSuffix}${ext}`;
+    //         const filename = `${uniqueSuffix}${ext}`;
+    //         callback(null, filename);
+    //       },
+    //     }),
+    //   }),
+    // )
+    // handleupload(@UploadedFile() image: Express.Multer.File) {
+    //   this.imagepath = image.path;
+    //   console.log('image', image);
+    //   console.log('path', image.path);
+    //   return 'file upload API';
+    // }
+    // @Get('showimage/:image')
+    // seeUploadedFile(@Param('image') image, @Res() res) {
+    //   return res.sendFile(image, { root: './uploaded_img' });
+    // }
 
 }
 
