@@ -42,6 +42,8 @@ import { StudentModule } from './student/student.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { UserdataModule } from './user/userdata/userdata.module';
 import { ExamModule } from './user/exam/exam.module';
+import { CategoryModule } from './book/category/category.module';
+
 
 @Module({
   imports: [
@@ -59,6 +61,7 @@ import { ExamModule } from './user/exam/exam.module';
     }),
 
     BookModule,
+    CategoryModule,
     UserModule,
     ExamModule,
     UserdataModule,
