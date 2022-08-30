@@ -1,7 +1,7 @@
 import { IsEmail, IsInt, IsString } from 'class-validator';
 export class DepCrud {
   @IsInt()
-  id: number;
+  dep_id: number;
 
   @IsString()
   depName: string;

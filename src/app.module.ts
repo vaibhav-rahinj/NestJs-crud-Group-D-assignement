@@ -31,19 +31,23 @@
 //   ],
 //   controllers: [AppController],
 import { BookModule } from './book/book.module';
-import { ConfigModule } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { AppService } from './app.service';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { EmpCrudModule } from './emp-crud/emp-crud.module';
 import { StudentModule } from './student/student.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
 import { MulterModule } from '@nestjs/platform-express';
-import { EmpCrudController } from './emp-crud/controller/emp-crud.controller';
 import { EmpCrudEntity } from './emp-crud/models/post.entity';
 import { Department } from './emp-crud/models/dep.entity';
 import { DepartmentModule } from './emp-crud/dep-crud.module';
+// import { UserdataModule } from './user/userdata/userdata.module';
+import { CategoryModule } from './book/category/category.module';
+import { ProductModule } from './product/product.module';
+import { UserdataModule } from './user/userdata/userdata.module';
+import { ExamModule } from './user/exam/exam.module';
 
 @Module({
   imports: [
@@ -61,11 +65,17 @@ import { DepartmentModule } from './emp-crud/dep-crud.module';
       synchronize: true,
     }),
     MulterModule.register({ dest: './images' }),
+
     BookModule,
+    CategoryModule,
     UserModule,
+    ExamModule,
+    UserdataModule,
     StudentModule,
     EmpCrudModule,
+
     DepartmentModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],

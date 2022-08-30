@@ -9,7 +9,7 @@ import { EmpCrudEntity } from './post.entity';
 @Entity()
 export class Department {
   @PrimaryGeneratedColumn()
-  id: number;
+  dep_id: number;
 
   @Column()
   depName: string;

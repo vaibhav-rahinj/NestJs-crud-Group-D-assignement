@@ -8,7 +8,8 @@ export class EmpCrudEntity {
   empFname: string;
   @Column()
   empLname: string;
-  @Column()
+
+  @Column({ unique: true })
   email: string;
   // @Column()
   // emp_gender: string;
@@ -16,6 +17,7 @@ export class EmpCrudEntity {
   emp_address: string;
   // @Column()
   // img: string;
+
   @ManyToMany(() => Department, (department) => department.Employee)
   department: Department[];
 }

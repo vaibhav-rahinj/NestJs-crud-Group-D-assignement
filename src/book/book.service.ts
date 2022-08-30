@@ -6,11 +6,12 @@ import { BookEntity } from './models/book.entity';
 import { Book } from './models/book.interface';
 import { BookModel } from './models/book.model';
 import { PatchBook } from './models/book.patch';
+import { PutBook } from './models/book.put';
 // import { BookModel } from './models/book.model';
 
 @Injectable()
 export class BookService {
-    imagepath: string;
+    // imagepath: string;
     constructor (
         @InjectRepository(BookEntity)
         private readonly bookRepository: Repository<BookEntity>
@@ -29,13 +30,22 @@ export class BookService {
         
     //     return "file upload API";
     //   }
+    
 
-    addBook(bookModel: BookModel): Observable<Book> {
-        return from(this.bookRepository.save(bookModel));
-        // return from(this.bookRepository.save(bookModel,bookModel.book_image=this.imagepath));
-        // return from(this.bookRepository.save(bookModel.book_image=this.imagepath));
+    // addBook(bookModel: BookModel): Observable<Book> {
+    //     return from(this.bookRepository.save(bookModel));
+    //     // return from(this.bookRepository.save(bookModel,bookModel.book_image=this.imagepath));
+    //     // return from(this.bookRepository.save(bookModel.book_image=this.imagepath));
+    // }
 
-    }
+    // trial bookEntity
+    addBook(bookModel: BookModel): Observable<BookEntity> {
+            return from(this.bookRepository.save(bookModel));
+            // return from(this.bookRepository.save(bookModel,bookModel.book_image=this.imagepath));
+            // return from(this.bookRepository.save(bookModel.book_image=this.imagepath));
+        }
+    
+    // trail
 
     findAllBooks(): Observable<Book[]> {
         return from(this.bookRepository.find());
@@ -74,8 +84,12 @@ export class BookService {
             return from(this.bookRepository.findOneBy({price}));
     }
 
-    updatePutBook(id: number, bookModel: BookModel): Observable<UpdateResult>{
-        return from(this.bookRepository.update(id,bookModel));
+    // updatePutBook(id: number, bookModel: BookModel): Observable<UpdateResult>{
+    //     return from(this.bookRepository.update(id,bookModel));
+    // }
+
+    updatePutBook(id: number, putBook: PutBook): Observable<UpdateResult>{
+        return from(this.bookRepository.update(id,putBook));
     }
 
     updatePatchBook(id: number, patchBook: PatchBook): Observable<UpdateResult>{

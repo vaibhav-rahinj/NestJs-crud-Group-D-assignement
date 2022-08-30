@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { Department } from '../models/dep.entity';
 import { DepCrud } from '../models/depinterface';
 import { DepartmentService } from '../services/dep-crud.service';
-@Controller('/dep')
+@Controller('/department')
 export class DepartmentController {
   constructor(private departmentService: DepartmentService) {}
 

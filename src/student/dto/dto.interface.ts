@@ -1,8 +1,28 @@
-export interface StudentInterface {
-  id?:number;
-  fname?: string;
-  lname?: string;
-  Stud_email?: string;
-  Stud_gender?: string;
-  Stud_address?: string;
+import { IsEmail, IsNotEmpty, IsString } from 'class-validator';
+export class StudentInterface {
+  // @IsNumber()
+  id: number;
+
+  @IsString()
+  @IsNotEmpty()
+  fname: string;
+
+  @IsString()
+  @IsNotEmpty()
+  lname: string;
+
+  @IsEmail()
+  @IsNotEmpty()
+  Stud_email: string;
+
+  @IsString()
+  @IsNotEmpty()
+  Stud_gender: string;
+
+  @IsString()
+  @IsNotEmpty()
+  Stud_address: string;
+
+  // @IsString()
+  // Image:string;
 }
