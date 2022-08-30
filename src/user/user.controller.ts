@@ -16,9 +16,9 @@ import { UserService } from './user.service';
 import { Observable, of } from 'rxjs';
 import { DeleteResult, UpdateResult } from 'typeorm';
 import { ValidateUser } from './models/user.validation';
-import { FileInterceptor } from '@nestjs/platform-express';
-import { diskStorage } from 'multer';
-import path, { extname } from 'path';
+// import { FileInterceptor } from '@nestjs/platform-express';
+// import { diskStorage } from 'multer';
+// import path, { extname } from 'path';
 import { PatchValidateUser } from './models/patchvalidation';
 
 // import { FileInterceptor } from '@nestjs/platform-express';
@@ -40,6 +40,7 @@ export class UserController {
 
   @Get(':id')
   getSpecificUser(@Param('id') id: number): Observable<User> {
+    console.log(id);
     return this.userService.getSpecificUser(id);
   }
 
