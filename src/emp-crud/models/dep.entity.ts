@@ -1,0 +1,23 @@
+import {
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { EmpCrudEntity } from './post.entity';
+@Entity()
+export class Department {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  @Column()
+  depName: string;
+
+  @Column()
+  post: string;
+
+  @ManyToMany(() => EmpCrudEntity, (Employee) => Employee.department)
+  @JoinTable()
+  Employee: EmpCrudEntity[];
+}

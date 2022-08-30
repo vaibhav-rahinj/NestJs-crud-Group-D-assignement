@@ -10,15 +10,14 @@ export class EmpCrud {
   empLname: string;
 
   @IsEmail()
-  emp_email: string;
+  email: string;
 
-  @IsString()
-  emp_gender: string;
+  // @IsString()
+  // emp_gender: string;
 
   @IsString()
   emp_address: string;
 
-  @IsString()
-  img:string;
-
+  // @IsString()
+  // img: string;
 }

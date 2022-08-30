@@ -40,6 +40,10 @@ import { AppController } from './app.controller';
 import { EmpCrudModule } from './emp-crud/emp-crud.module';
 import { StudentModule } from './student/student.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { EmpCrudController } from './emp-crud/controller/emp-crud.controller';
+import { EmpCrudEntity } from './emp-crud/models/post.entity';
+import { Department } from './emp-crud/models/dep.entity';
+import { DepartmentModule } from './emp-crud/dep-crud.module';
 
 @Module({
   imports: [
@@ -53,13 +57,15 @@ import { MulterModule } from '@nestjs/platform-express';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
       autoLoadEntities: true,
+      entities: [EmpCrudEntity, Department],
       synchronize: true,
     }),
-    MulterModule.register({ dest:'./images' }),
+    MulterModule.register({ dest: './images' }),
     BookModule,
     UserModule,
     StudentModule,
     EmpCrudModule,
+    DepartmentModule,
   ],
   controllers: [AppController],
   providers: [AppService],
