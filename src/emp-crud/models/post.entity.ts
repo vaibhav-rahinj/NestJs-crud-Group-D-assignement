@@ -1,4 +1,5 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Department } from './dep.entity';
 @Entity('emp')
 export class EmpCrudEntity {
   @PrimaryGeneratedColumn()
@@ -7,6 +8,7 @@ export class EmpCrudEntity {
   empFname: string;
   @Column()
   empLname: string;
+
   @Column({ unique: true })
   email: string;
   // @Column()
@@ -15,4 +17,7 @@ export class EmpCrudEntity {
   emp_address: string;
   // @Column()
   // img: string;
+
+  @ManyToMany(() => Department, (department) => department.Employee)
+  department: Department[];
 }
