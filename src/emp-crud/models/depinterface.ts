@@ -1,4 +1,4 @@
-import { IsEmail, IsInt, IsString } from 'class-validator';
+import { IsInt, IsString } from 'class-validator';
 export class DepCrud {
   @IsInt()
   dep_id: number;
