@@ -1,8 +1,9 @@
 import { Column,  Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 import { IsNotEmpty, IsString, IsInt} from "class-validator";
+// import { BookCategoryEntity } from "./category/category.entity";
+// import { ForeignKeyMetadata } from "typeorm/metadata/ForeignKeyMetadata";
 import { BookCategoryEntity } from "../category/category.entity";
-import { ForeignKeyMetadata } from "typeorm/metadata/ForeignKeyMetadata";
 // import { Factory } from 'nestjs-seeder';
 // import {IsNotEmpty} from "@nestjs/common";
 
@@ -42,41 +43,24 @@ export class BookEntity {
     // @Column({name:"id"})
     // @JoinTable({name: "book_category1"}) 
     @JoinTable({
-        name: "book_categories1", // table name for the junction table of this relation
-       
-        // joinColumn:{
-        //     // @PrimaryGeneratedColumn()
-        //     name:"ID"
-        //     referencedColumnName:"id"
-            
-        // },
+        name: "bookcategory123", // table name for the junction table of this relation
+        // @Column()
+        // id:number,
         joinColumn: {
             name: "book",
             referencedColumnName: "book_id",
-            foreignKeyConstraintName:"book_id"
+            foreignKeyConstraintName:"book"
         },
         inverseJoinColumn: {
             name: "category",
             referencedColumnName: "categoryId",
-            foreignKeyConstraintName:"categoryId"
+            foreignKeyConstraintName:"category"
         }
     })
     // @PrimaryGeneratedColumn()
     // @PrimaryColumn() @IsNotEmpty() @IsInt() id:number
     category:BookCategoryEntity[];
-    // @IsInt()
-    // @PrimaryGeneratedColumn()
-    // @Column({name:"id"})
-
-       
-    // joinColumns: [{ name: "book_id" }],
-    // inverseJoinColumns: [{ name: "categoryId" }]
-    
-    // @ForeignKeyMetadata()
    
-    
-
-    // book: any;
 
     @Column()
     @IsNotEmpty()

@@ -41,6 +41,7 @@ import { EmpCrudModule } from './emp-crud/emp-crud.module';
 import { StudentModule } from './student/student.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { CategoryModule } from './book/category/category.module';
+import { BookCatModule } from './book/category/category_book/bookcat.module';
 
 @Module({
   imports: [
@@ -54,10 +55,11 @@ import { CategoryModule } from './book/category/category.module';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
       autoLoadEntities: true,
-      synchronize: true,
+      synchronize: false,
     }),
 
     BookModule,
+    BookCatModule,
     CategoryModule,
     UserModule,
     StudentModule,
