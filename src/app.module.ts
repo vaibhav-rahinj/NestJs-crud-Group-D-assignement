@@ -39,6 +39,12 @@ import { EmpCrudModule } from './emp-crud/emp-crud.module';
 import { StudentModule } from './student/student.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
+import { MulterModule } from '@nestjs/platform-express';
+import { UserdataModule } from './user/userdata/userdata.module';
+import { ExamModule } from './user/exam/exam.module';
+import { CategoryModule } from './book/category/category.module';
+import { ProductModule } from './product/product.module';
+
 
 @Module({
   imports: [
@@ -56,11 +62,15 @@ import { ConfigModule } from '@nestjs/config';
     }),
 
     BookModule,
+    CategoryModule,
     UserModule,
+    ExamModule,
+    UserdataModule,
     StudentModule,
     EmpCrudModule,
+    ProductModule
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }

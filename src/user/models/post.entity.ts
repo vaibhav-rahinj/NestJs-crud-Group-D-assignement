@@ -1,4 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { ExamEntity } from "../exammodels/exam.entity";
+import { Exam } from "../exammodels/exam.interface";
+
 
 @Entity('users')
 export class UserPostEntity{
@@ -19,7 +22,7 @@ export class UserPostEntity{
     Gender: string;
 
     // @Column()
-    // Date_of_Birth:Date;
+    // Exam_Center: string;
 
     // @Column()
     // Mobile_no:BigInteger;
@@ -34,5 +37,12 @@ export class UserPostEntity{
     Country:string;
     // @Column({nullable: true})
     // User_img:string;
-    
+
+    // @OneToMany((type) => ExamEntity, (exam) => exam.Center_Name)
+    // Center: ExamEntity[]
+
+    @ManyToMany((type) => ExamEntity, (exam) => exam.Center_Name)
+    Center: ExamEntity[]
+
 }
+
