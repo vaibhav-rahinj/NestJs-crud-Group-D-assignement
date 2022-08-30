@@ -41,6 +41,7 @@ import { EmpCrudModule } from './emp-crud/emp-crud.module';
 import { StudentModule } from './student/student.module';
 import { MulterModule } from '@nestjs/platform-express';
 import { CategoryModule } from './book/category/category.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
   imports: [
@@ -62,8 +63,9 @@ import { CategoryModule } from './book/category/category.module';
     UserModule,
     StudentModule,
     EmpCrudModule,
+    ProductModule
   ],
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
