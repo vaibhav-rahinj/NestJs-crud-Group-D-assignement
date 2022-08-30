@@ -1,13 +1,17 @@
-import { validate, IsString } from 'class-validator';
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
-
-@Entity('student1')
+import { IsString } from 'class-validator';
+import {
+  Column,
+  Entity,
+  ManyToMany,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Subject } from './subject.entity';
+@Entity()
 export class student {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column({ default: '' })
-  @IsString()
   fname: string;
 
   @Column()
@@ -19,9 +23,12 @@ export class student {
   @Column()
   Stud_gender: string;
 
-  // @Column()
-  // Stud_image:string;
-
   @Column()
   Stud_address: string;
+
+  // @ManyToMany(() => Subject, subjects => subjects.students)
+  // subjects: Promise<Subject[]>;
+
+  @ManyToMany((type) => Subject, (subjects) => subjects.students)
+  subjects: Promise<Subject[]>;
 }

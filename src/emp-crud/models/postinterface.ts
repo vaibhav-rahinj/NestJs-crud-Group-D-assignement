@@ -1,24 +1,28 @@
-import { IsEmail, IsInt, IsString } from 'class-validator';
+import { IsEmail, IsInt, IsNotEmpty, IsString } from 'class-validator';
 export class EmpCrud {
   @IsInt()
+  @IsNotEmpty()
   id: number;
 
   @IsString()
+  @IsNotEmpty()
   empFname: string;
 
   @IsString()
+  @IsNotEmpty()
   empLname: string;
 
   @IsEmail()
-  emp_email: string;
+  @IsNotEmpty()
+  email: string;
+
+  // @IsString()
+  // emp_gender: string;
 
   @IsString()
-  emp_gender: string;
-
-  @IsString()
+  @IsNotEmpty()
   emp_address: string;
 
-  @IsString()
-  img:string;
-
+  // @IsString()
+  // img: string;
 }
