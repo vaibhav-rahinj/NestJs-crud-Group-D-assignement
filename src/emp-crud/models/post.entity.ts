@@ -7,12 +7,12 @@ export class EmpCrudEntity {
   empFname: string;
   @Column()
   empLname: string;
-  @Column()
-  emp_email: string;
-  @Column()
-  emp_gender: string;
+  @Column({ unique: true })
+  email: string;
+  // @Column()
+  // emp_gender: string;
   @Column()
   emp_address: string;
-  @Column()
-  img: string;
+  // @Column()
+  // img: string;
 }

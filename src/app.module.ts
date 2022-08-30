@@ -31,14 +31,14 @@
 //   ],
 //   controllers: [AppController],
 import { BookModule } from './book/book.module';
-import { ConfigModule } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { AppService } from './app.service';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { EmpCrudModule } from './emp-crud/emp-crud.module';
 import { StudentModule } from './student/student.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config';
 import { MulterModule } from '@nestjs/platform-express';
 import { UserdataModule } from './user/userdata/userdata.module';
 import { ExamModule } from './user/exam/exam.module';
