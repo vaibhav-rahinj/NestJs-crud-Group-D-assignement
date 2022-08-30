@@ -1,44 +1,53 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { from, Observable } from 'rxjs';
-import { DeleteResult, Repository, UpdateResult } from 'typeorm';
-import { student } from '../entity/student.entity';
+import { Repository } from 'typeorm';
 import { StudentInterface } from '../dto/dto.interface';
+import { UpdateStudentDto } from '../dto/update-student.dto';
+import { student } from '../entity/student.entity';
 
 @Injectable()
 export class StudentService {
+  //inject student repository...
   constructor(
     @InjectRepository(student)
-    private readonly studentPostRepository: Repository<student>,
+    private readonly studentRepository: Repository<student>,
   ) {}
-
-  createPost(studentPost: StudentInterface): Observable<StudentInterface> {
-    return from(this.studentPostRepository.save(studentPost));
+  create(studentInterface: StudentInterface): Promise<student> {
+    // let stud: student_m = new student_m();
+    // //student.id = CreateStudentDto.id
+    // stud.FirstName = CreateStudentDto.FirstName;
+    // stud.LastName = CreateStudentDto.LastName;
+    // stud.Gender = CreateStudentDto.Gender;
+    // stud.Student_Email = CreateStudentDto.Student_Email;
+    // stud.Student_Add = CreateStudentDto.Student_Add;
+    // return this.studentRepository.save(stud);
+    return this.studentRepository.save(studentInterface);
   }
 
-  findAllPosts(): Observable<StudentInterface[]> {
-    return from(this.studentPostRepository.find());
+  findAll(): Promise<student[]> {
+    return this.studentRepository.find();
   }
 
-  updatePutPost(
-    id: number,
-    studentPost: StudentInterface,
-  ): Observable<UpdateResult> {
-    return from(this.studentPostRepository.update(id, studentPost));
+  findOne(id: number) {
+    return this.studentRepository.findOneBy({ id });
   }
 
-  updatePatchPost(
-    id: number,
-    studentPost: StudentInterface,
-  ): Observable<UpdateResult> {
-    return from(this.studentPostRepository.update(id, studentPost));
+  update(id: number, updateStudentDto: UpdateStudentDto) {
+    // let stud: student_m = new student_m();
+    // stud.FirstName = updateStudentDto.FirstName;
+    // stud.LastName = updateStudentDto.LastName;
+    // stud.Gender = updateStudentDto.Gender;
+    // stud.Student_Email = updateStudentDto.Student_Email;
+    // stud.Student_Add = updateStudentDto.Student_Add;
+    // stud.id = id;
+    // return this.studentRepository.save(stud);
+    return this.studentRepository.update(id, updateStudentDto);
+  }
+  updateAll(id: number, updateStudentDto: UpdateStudentDto) {
+    return this.update(id, updateStudentDto);
   }
 
-  deletePost(id: number): Observable<DeleteResult> {
-    return from(this.studentPostRepository.delete(id));
-  }
-  getstudentById(id: number): Observable<StudentInterface> {
-    // const student_id = id;
-    return from(this.studentPostRepository.findOneBy({ id }));
+  remove(id: number) {
+    return this.studentRepository.delete(id);
   }
 }
