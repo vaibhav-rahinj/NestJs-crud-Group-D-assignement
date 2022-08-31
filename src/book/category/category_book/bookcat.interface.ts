@@ -1,9 +1,7 @@
-// import { PrimaryGeneratedColumn } from "typeorm";
 
 
 export interface BookCat{
-    // @PrimaryGeneratedColumn()
-    // id: number;
+     // id: number;
     book:number;
     category:number
 }
