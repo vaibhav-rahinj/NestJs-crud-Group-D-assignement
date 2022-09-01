@@ -6,17 +6,26 @@ import { PatchValidateUser } from './models/patchvalidation';
 import { UserPostEntity } from './models/post.entity';
 import { User } from './models/post.interface';
 import { ValidateUser } from './models/user.validation';
+// import { UserdataEntity } from './userdata/userdata.entity';
+// import { Userdata } from './userdata/userdata.interface';
 
 @Injectable()
 export class UserService {
     constructor(
         @InjectRepository(UserPostEntity)
-        private readonly userPostRepository:Repository<UserPostEntity>
+        private readonly userPostRepository:Repository<UserPostEntity>, 
+
+        // @InjectRepository(UserdataEntity)
+        // private readonly userdataRepository:Repository<UserdataEntity>
     ){}
 
     createUser(users: ValidateUser): Observable<User>{
         return from(this.userPostRepository.save(users));
     }
+
+    // createUserdata(userdata: Userdata): Observable<Userdata>{
+    //     return from(this.userdataRepository.save(userdata));
+    // }
 
     findAllUsers(): Observable<User[]>{
         return from(this.userPostRepository.find());
