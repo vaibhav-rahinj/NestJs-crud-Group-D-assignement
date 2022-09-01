@@ -4,6 +4,8 @@ import { from, Observable } from 'rxjs';
 import { Repository } from 'typeorm';
 import { Department } from '../models/dep.entity';
 import { DepCrud } from '../models/depinterface';
+import { EmpCrudEntity } from '../models/post.entity';
+import { EmpCrudService } from './emp-crud.service';
 
 @Injectable()
 export class DepartmentService {
