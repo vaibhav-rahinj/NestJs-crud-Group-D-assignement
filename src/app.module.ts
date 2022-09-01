@@ -73,7 +73,6 @@ import { ExamModule } from './user/exam/exam.module';
     UserdataModule,
     StudentModule,
     EmpCrudModule,
-
     DepartmentModule,
     ProductModule,
   ],
