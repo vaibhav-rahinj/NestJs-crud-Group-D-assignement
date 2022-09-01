@@ -35,10 +35,15 @@ export class UserController {
     return this.userService.createUser(users);
   }
 
-  // @Post('userdata')
-  // createdata(@Body() userdata: Userdata): Observable<Userdata> {
-  //   return this.userService.createUserdata(userdata);
-  // }
+  @Post('userdata')
+  createdata(@Body() validateUserdata: ValidateUserdata): Observable<Userdata> {
+    return this.userService.createUserdata(validateUserdata);
+  }
+  @Get('userdata')
+  findAllUserdata(): Observable<Userdata[]> {
+    return this.userService.findAllUsersdata();
+  }
+
 
   @Get()
   findAllUser(): Observable<User[]> {
