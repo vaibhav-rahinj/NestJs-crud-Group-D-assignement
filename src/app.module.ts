@@ -9,8 +9,13 @@ import { AppController } from './app.controller';
 import { EmpCrudModule } from './emp-crud/emp-crud.module';
 import { StudentModule } from './student/student.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { ExamModule } from './user/exam/exam.module';
 import { CategoryModule } from './book/category/category.module';
 import { BookCatModule } from './book/category/category_book/bookcat.module';
+import { DepartmentModule } from './emp-crud/dep-crud.module';
+import { ProductModule } from './product/product.module';
+import { EmpCrudEntity } from './emp-crud/models/post.entity';
+import { Department } from './emp-crud/models/dep.entity';
 
 @Module({
   imports: [
@@ -32,6 +37,7 @@ import { BookCatModule } from './book/category/category_book/bookcat.module';
     BookCatModule,
     CategoryModule,
     UserModule,
+    ExamModule,
     StudentModule,
     EmpCrudModule,
     DepartmentModule,
