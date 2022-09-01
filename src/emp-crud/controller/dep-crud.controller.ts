@@ -7,7 +7,8 @@ import { DepartmentService } from '../services/dep-crud.service';
 export class DepartmentController {
   constructor(private departmentService: DepartmentService) {}
 
-  @Post() create(@Body() department: Department): Observable<Department> {
+  @Post()
+  createDep(@Body() department: Department): Observable<Department> {
     return this.departmentService.createDeparment(department);
   }
 
