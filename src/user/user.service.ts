@@ -6,6 +6,9 @@ import { PatchValidateUser } from './models/patchvalidation';
 import { UserPostEntity } from './models/post.entity';
 import { User } from './models/post.interface';
 import { ValidateUser } from './models/user.validation';
+import { UserdataEntity } from './userdata/userdata.entity';
+import { Userdata } from './userdata/userdata.interface';
+import { ValidateUserdata } from './userdata/userdata.validation';
 // import { UserdataEntity } from './userdata/userdata.entity';
 // import { Userdata } from './userdata/userdata.interface';
 
@@ -14,18 +17,23 @@ export class UserService {
     constructor(
         @InjectRepository(UserPostEntity)
         private readonly userPostRepository:Repository<UserPostEntity>, 
-
-        // @InjectRepository(UserdataEntity)
-        // private readonly userdataRepository:Repository<UserdataEntity>
+        @InjectRepository(UserdataEntity)
+        private readonly userdataRepository:Repository<UserdataEntity>
     ){}
 
     createUser(users: ValidateUser): Observable<User>{
         return from(this.userPostRepository.save(users));
     }
 
-    // createUserdata(userdata: Userdata): Observable<Userdata>{
-    //     return from(this.userdataRepository.save(userdata));
-    // }
+    //Third table
+    createUserdata(validateUserdata: ValidateUserdata): Observable<UserdataEntity>{
+        return from(this.userdataRepository.save(validateUserdata));
+    }
+
+    findAllUsersdata(): Observable<Userdata[]>{
+        return from(this.userdataRepository.find());
+    }
+//----------------------------------------------------------
 
     findAllUsers(): Observable<User[]>{
         return from(this.userPostRepository.find());
