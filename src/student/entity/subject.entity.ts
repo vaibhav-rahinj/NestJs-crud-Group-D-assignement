@@ -1,27 +1,25 @@
-import { IsString } from 'class-validator';
 import {
   Column,
   Entity,
+  JoinColumn,
   JoinTable,
   ManyToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
-import { student } from '../../student/entity/student.entity';
+import { student } from './student.entity';
 
-@Entity('subject')
-export class Subject {
+@Entity('subjects')
+export class subjects {
   @PrimaryGeneratedColumn()
-  sub_id: number;
+  id: number;
 
   @Column()
-  Sub_name: string;
+  name: String;
 
-  // @ManyToMany(() => student, (students) => students.subjects)
-  // students: Promise<student[]>;
+  // @Column()
+  // info: String;
 
-  @ManyToMany((type) => student, (students) => students.subjects)
-  @JoinTable({
-    name:''
-  })
-  students:Promise<student[]>;
+  @ManyToMany(() => student, (students) => students.subjects)
+  
+  students: Promise<student[]>;
 }
