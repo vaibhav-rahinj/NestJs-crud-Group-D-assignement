@@ -20,7 +20,8 @@ export class EmpCrudController {
     return this.employeeService.getemployeeById(id);
   }
 
-  @Post() create(@Body() employeePost: EmpCrud): Observable<EmpCrud> {
+  @Post()
+   create(@Body() employeePost: EmpCrud): Observable<EmpCrud> {
     return this.employeeService.createPost(employeePost);
   }
   @Get() findAll(): Observable<EmpCrud[]> {

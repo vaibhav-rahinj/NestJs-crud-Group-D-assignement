@@ -1,4 +1,3 @@
-
 import { BookModule } from './book/book.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -39,6 +38,7 @@ import { Department } from './emp-crud/models/dep.entity';
     ExamModule,
     StudentModule,
     EmpCrudModule,
+    DepartmentModule,
     ProductModule,
   ],
   controllers: [AppController],
