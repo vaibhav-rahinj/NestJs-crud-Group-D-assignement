@@ -2,11 +2,14 @@ import { Injectable, UploadedFile } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { from, Observable } from 'rxjs';
 import { DeleteResult, Repository, UpdateResult } from 'typeorm';
+import { BookCatEntity } from './category/category_book/bookcat.entity';
+import { BookCat } from './category/category_book/bookcat.interface';
+import { BookCatModel } from './category/category_book/bookcat.model';
 import { BookEntity } from './models/book.entity';
 import { Book } from './models/book.interface';
 import { BookModel } from './models/book.model';
 import { PatchBook } from './models/book.patch';
-import { PutBook } from './models/book.put';
+// import { PutBook } from './models/book.put';
 // import { BookModel } from './models/book.model';
 
 @Injectable()
@@ -14,7 +17,9 @@ export class BookService {
     // imagepath: string;
     constructor (
         @InjectRepository(BookEntity)
-        private readonly bookRepository: Repository<BookEntity>
+        private readonly bookRepository: Repository<BookEntity>,
+        @InjectRepository(BookCatEntity)
+        private readonly bookCatRepository:Repository<BookCatEntity>
     ) {}
 
     // addBook(bookModel: BookModel) {
@@ -23,14 +28,7 @@ export class BookService {
     //     // return from(this.bookRepository.save(book));
     // }
 
-    // handleupload(@UploadedFile() image:Express.Multer.File){
-    //     this.imagepath = image.path;
-    //     console.log('image', image); 
-    //     console.log('path',image.path);
-        
-    //     return "file upload API";
-    //   }
-    
+   
 
     // addBook(bookModel: BookModel): Observable<Book> {
     //     return from(this.bookRepository.save(bookModel));
@@ -41,14 +39,24 @@ export class BookService {
     // trial bookEntity
     addBook(bookModel: BookModel): Observable<BookEntity> {
             return from(this.bookRepository.save(bookModel));
-            // return from(this.bookRepository.save(bookModel,bookModel.book_image=this.imagepath));
-            // return from(this.bookRepository.save(bookModel.book_image=this.imagepath));
-        }
+    }
+
+     // third Table
+    addBookCat(bookCatModel: BookCatModel): Observable<BookCatEntity> {
+            return from(this.bookCatRepository.save(bookCatModel));
+            // return from(this.bookRepository.save(bookCatModel));
+    }
     
     // trail
 
     findAllBooks(): Observable<Book[]> {
         return from(this.bookRepository.find());
+    }
+
+    // third Table
+    findAllBookCat(): Observable<BookCat[]> {
+        return from(this.bookCatRepository.find());
+        // return from(this.bookRepository.find());
     }
 
     
@@ -84,12 +92,9 @@ export class BookService {
             return from(this.bookRepository.findOneBy({price}));
     }
 
-    // updatePutBook(id: number, bookModel: BookModel): Observable<UpdateResult>{
-    //     return from(this.bookRepository.update(id,bookModel));
-    // }
 
-    updatePutBook(id: number, putBook: PutBook): Observable<UpdateResult>{
-        return from(this.bookRepository.update(id,putBook));
+    updatePutBook(id: number, bookModel: BookModel): Observable<UpdateResult>{
+        return from(this.bookRepository.update(id,bookModel));
     }
 
     updatePatchBook(id: number, patchBook: PatchBook): Observable<UpdateResult>{

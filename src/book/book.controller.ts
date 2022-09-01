@@ -11,24 +11,27 @@ import {
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
-import { diskStorage } from 'multer';
-import { extname } from 'path';
+// import { FileInterceptor } from '@nestjs/platform-express';
+// import { diskStorage } from 'multer';
+// import { extname } from 'path';
 // import { IsNotEmpty } from 'class-validator';
 import { Observable } from 'rxjs';
 import { DeleteResult, UpdateResult } from 'typeorm';
 import { BookService } from './book.service';
+import { BookCat } from './category/category_book/bookcat.interface';
+import { BookCatModel } from './category/category_book/bookcat.model';
 import { BookEntity } from './models/book.entity';
 import { Book } from './models/book.interface';
 import { BookModel } from './models/book.model';
 import { PatchBook } from './models/book.patch';
-import { PutBook } from './models/book.put';
+// import { PutBook } from './models/book.put';
 // import {Images} from '../../images';
 
 @Controller('book')
 export class BookController {
   constructor(private bookService: BookService) {}
   //  imagepath: string='';
-  @Post()
+  // @Post()
   // @IsNotEmpty()
   // add(@Body() bookModel: BookModel): Observable<Book> {
   //   // bookModel.author="vjvbczh";
@@ -40,13 +43,30 @@ export class BookController {
   // }
 
   // trial
+  @Post()
   add(@Body() bookModel: BookModel): Observable<Book> {
-    // bookModel.author="vjvbczh";
-    console.log(bookModel);
     
+    console.log(bookModel);
     // bookModel.book_image=this.imagepath;
     return this.bookService.addBook(bookModel);
     // return this.bookService.addBook(bookModel,bookModel.book_image=this.imagepath);
+  }
+
+  // bookCat
+   // third Table
+  @Post("/bookcat")
+  addBookCat(@Body() bookCatModel: BookCatModel): Observable<BookCat> {
+  
+    console.log(bookCatModel);
+    return this.bookService.addBookCat(bookCatModel);
+  }
+
+ // third Table
+  @Get("/bookcat")
+  findAllBookCat(): Observable<BookCat[]> {
+    console.log("function called");
+    
+    return this.bookService.findAllBookCat();
   }
   //trial
 
