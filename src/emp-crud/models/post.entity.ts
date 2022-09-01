@@ -19,5 +19,5 @@ export class EmpCrudEntity {
   // img: string;
 
   @ManyToMany(() => Department, (department) => department.Employee)
-  department: Department[];
+  department: Promise<Department[]>;
 }

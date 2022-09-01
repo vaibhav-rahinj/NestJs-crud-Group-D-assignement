@@ -8,7 +8,7 @@ export class DepartmentController {
   constructor(private departmentService: DepartmentService) {}
 
   @Post()
-  createDep(@Body() department: Department): Observable<Department> {
+  createDepartment(@Body() department: Department): Observable<Department> {
     return this.departmentService.createDeparment(department);
   }
 
