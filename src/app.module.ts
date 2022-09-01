@@ -24,6 +24,7 @@ import { BookCatModule } from './book/category/category_book/bookcat.module';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
       autoLoadEntities: true,
+      entities: [EmpCrudEntity, Department],
       synchronize: false,
     }),
 
@@ -33,6 +34,8 @@ import { BookCatModule } from './book/category/category_book/bookcat.module';
     UserModule,
     StudentModule,
     EmpCrudModule,
+    DepartmentModule,
+    ProductModule,
   ],
   controllers: [AppController],
   providers: [AppService],
