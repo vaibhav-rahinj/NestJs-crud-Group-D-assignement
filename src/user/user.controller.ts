@@ -20,6 +20,8 @@ import { ValidateUser } from './models/user.validation';
 // import { diskStorage } from 'multer';
 // import path, { extname } from 'path';
 import { PatchValidateUser } from './models/patchvalidation';
+import { ValidateUserdata } from './userdata/userdata.validation';
+import { Userdata } from './userdata/userdata.interface';
 
 // import { FileInterceptor } from '@nestjs/platform-express';
 
@@ -32,6 +34,11 @@ export class UserController {
     // users.User_img=this.imagepath;
     return this.userService.createUser(users);
   }
+
+  // @Post('userdata')
+  // createdata(@Body() userdata: Userdata): Observable<Userdata> {
+  //   return this.userService.createUserdata(userdata);
+  // }
 
   @Get()
   findAllUser(): Observable<User[]> {
