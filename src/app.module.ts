@@ -29,7 +29,6 @@ import { Department } from './emp-crud/models/dep.entity';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
       autoLoadEntities: true,
-      entities: [EmpCrudEntity, Department],
       synchronize: false,
     }),
 
@@ -40,7 +39,6 @@ import { Department } from './emp-crud/models/dep.entity';
     ExamModule,
     StudentModule,
     EmpCrudModule,
-    DepartmentModule,
     ProductModule,
   ],
   controllers: [AppController],
