@@ -16,7 +16,7 @@ import {
 import { CategoryModel } from './category.model';
 import { PatchCategory } from './category.patch';
 import { CategoryService } from './category.service';
-import { Category } from './cateogory.interface';
+import { Category } from './category.interface';
 
 
   
