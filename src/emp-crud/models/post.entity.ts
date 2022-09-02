@@ -1,4 +1,5 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Observable } from 'rxjs';
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from 'typeorm';
 import { Department } from './dep.entity';
 @Entity('emp')
 export class EmpCrudEntity {
@@ -19,5 +20,6 @@ export class EmpCrudEntity {
   // img: string;
 
   @ManyToMany(() => Department, (department) => department.Employee)
-  department: Promise<Department[]>;
+  @JoinTable({name:'EmpDep'})
+  department: Observable<Department[]>;
 }

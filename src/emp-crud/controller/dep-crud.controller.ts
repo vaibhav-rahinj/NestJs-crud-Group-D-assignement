@@ -8,12 +8,12 @@ export class DepartmentController {
   constructor(private departmentService: DepartmentService) {}
 
   @Post()
-  createDepartment(@Body() department: Department): Observable<Department> {
+  createDepartment(@Body() department: Department) {
     return this.departmentService.createDeparment(department);
   }
 
   @Get()
-  findAllDepartment(): Observable<DepCrud[]> {
+  findAllDepartment() {
     return this.departmentService.findAllDepartment();
   }
 }

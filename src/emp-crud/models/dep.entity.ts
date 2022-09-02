@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import {
   Column,
   Entity,
@@ -18,6 +19,6 @@ export class Department {
   post: string;
 
   @ManyToMany(() => EmpCrudEntity, (Employee) => Employee.department)
-  @JoinTable()
-  Employee: EmpCrudEntity[];
+  @JoinTable({name:'EmpDep'})
+  Employee: Observable<EmpCrudEntity[]>;
 }
