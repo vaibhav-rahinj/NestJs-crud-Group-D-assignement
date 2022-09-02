@@ -8,7 +8,7 @@ import { EmpCrudEntity } from './models/post.entity';
 // import { departmentRepo } from './dep.repository';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Department])],
+  imports: [TypeOrmModule.forFeature([Department,EmpCrudEntity])],
   providers: [DepartmentService],
   controllers: [DepartmentController],
 })
