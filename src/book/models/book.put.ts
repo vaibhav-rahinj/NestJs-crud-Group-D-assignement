@@ -1,9 +1,6 @@
 import { IsInt, IsNotEmpty, IsString } from "class-validator";
 
 export class PutBook {
-    // constructor(parameters) {
-        
-    // }
 
     @IsNotEmpty() @IsInt() 
     book_id: number;
