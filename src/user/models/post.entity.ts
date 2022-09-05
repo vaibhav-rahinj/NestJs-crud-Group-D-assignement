@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm";
 import { ExamEntity } from "../exammodels/exam.entity";
 import { Exam } from "../exammodels/exam.interface";
 
@@ -41,8 +41,20 @@ export class UserPostEntity{
     // @OneToMany((type) => ExamEntity, (exam) => exam.Center_Name)
     // Center: ExamEntity[]
 
-    @ManyToMany((type) => ExamEntity, (exam) => exam.Center_Name)
+    @ManyToMany(() => ExamEntity, (Center:ExamEntity) => Center.User)
+    @JoinTable({
+        name: 'User_exam_Table', // table name for the junction table of this relation
+        joinColumn: {
+          name: 'User',
+          referencedColumnName: 'User_Id',
+          foreignKeyConstraintName: 'User',
+        },
+        inverseJoinColumn: {
+          name: 'Center',
+          referencedColumnName: 'Center_Id',
+          foreignKeyConstraintName: 'Center',
+        },
+      })
     Center: ExamEntity[]
-
 }
 
