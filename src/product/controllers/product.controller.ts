@@ -3,17 +3,29 @@ import {
   Controller,
   Delete,
   Get,
+  HttpStatus,
   Param,
+  ParseIntPipe,
+  ParseUUIDPipe,
   Patch,
   Post,
   Put,
+  Query,
   Res,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { DeleteResult, UpdateResult } from 'typeorm';
-import { ProductPost, ProductPostCategoryInterface } from '../models/product.interface';
+import {} from '../models/product.entity';
+import { ProductPost } from '../models/product.interface';
+// import { ProductPost } from '../models/product.entity';
+//import {} from '../models/product.interface'
+import { ProductService } from '../services/product.service';
+import { CreateUserModel } from '../models/productModel';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { extname } from 'path';
 
 import { ProductService } from '../services/product.service';
 import { CreateUserModel } from '../models/Product/productModel';
@@ -28,13 +40,43 @@ import { ProductCategoryService } from '../services/product.service';
 @Controller('product')
 export class ProductController {
   imagepath: string;
-  constructor(private ProductService: ProductService) { }
+  constructor(private ProductService: ProductService) {}
 
-  @Post('/create')
+  //------Upload--Image------------------//
+  @Post('image')
+  @UseInterceptors(
+    FileInterceptor('image', {
+      storage: diskStorage({
+        destination: './src/product/images',
+        filename: (req, image, callback) => {
+          const uniqueSuffix =
+            Date.now() + '-' + Math.round(Math.random() * 1e9);
+          const ext = extname(image.originalname);
+          // const filename = `${image.originalname}-${uniqueSuffix}${ext}`;
+          const filename = `${uniqueSuffix}${ext}`;
+          callback(null, filename);
+        },
+      }),
+    }),
+  )
+  handleupload(@UploadedFile() image: Express.Multer.File) {
+    this.imagepath = image.path;
+    console.log('image', image);
+    console.log('path', image.path);
+    return 'file upload API';
+  }
+
+  @Get('/image/:imgpath')
+  seeUploadedFile(@Param('imgpath') image, @Res() res) {
+    return res.sendFile(image, { root: './src/product/images' });
+  }
+
+  //-----End-----------//
+
+  @Post()
   create(@Body() productPost: CreateUserModel): Observable<ProductPost> {
     return this.ProductService.createPost(productPost);
   }
-
 
   //--Category--Create--//
   // @Post('/categoryCreate')
@@ -42,17 +84,13 @@ export class ProductController {
   //   return this.ProductCa.createProductCategory(productCatePost);
   // }
 
-
-
   @Get('/allData')
   findPost(): Observable<ProductPost[]> {
     return this.ProductService.findAllPost();
   }
   @Get(':id')
   findPostId(
-    @Param(
-      'id'
-    )
+    @Param('id')
     id: number,
   ): Observable<ProductPost> {
     return this.ProductService.findById(id);
@@ -89,9 +127,7 @@ export class ProductController {
 
   @Put(':id')
   updatePost(
-    @Param(
-      'id'
-    )
+    @Param('id')
     id: number,
     @Body() productPost: CreateUserModel,
   ): Observable<UpdateResult> {
@@ -100,9 +136,7 @@ export class ProductController {
 
   @Patch(':id')
   updateSomeData(
-    @Param(
-      'id',
-    )
+    @Param('id')
     id: number,
     @Body() feedPost: CreateUserModel,
   ): Observable<UpdateResult> {
@@ -110,9 +144,7 @@ export class ProductController {
   }
   @Delete(':id')
   deletePost(
-    @Param(
-      'id'
-    )
+    @Param('id')
     id: number,
   ): Observable<DeleteResult> {
     return this.ProductService.DeleteData(id);
@@ -144,5 +176,3 @@ export class ProductController {
     return res.sendFile(image, { root: './images' });
   }
 }
-
-
