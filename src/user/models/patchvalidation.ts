@@ -10,9 +10,11 @@ export class PatchValidateUser{
     @IsNotEmpty() @IsString()@IsOptional() @ApiProperty ({required: false})  Gender: string;
     @IsNotEmpty() @IsString() @IsOptional() @ApiProperty ({required: false}) Exam_Center: string;
     // @IsNotEmpty() @IsInt() Mobile_no: number;
-    // @IsNotEmpty() @IsString() Address: string;
+    // @IsNotEmpty() @IsString() Center_Id: string;
     @IsNotEmpty() @IsString() @IsOptional() @ApiProperty ({required: false}) State: string;
     @IsNotEmpty() @IsString() @IsOptional() @ApiProperty ({required: false}) Country: string;
+    // @IsNotEmpty() @IsOptional() @ApiProperty ({required: false}) Center_Id: number;
     // @IsNotEmpty() @IsString() User_img: string;
+
 
 }
