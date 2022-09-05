@@ -38,4 +38,5 @@ export class BookCatEntity {
   // @IsNotEmpty()
   // @IsInt()
   category: number;
+
 }

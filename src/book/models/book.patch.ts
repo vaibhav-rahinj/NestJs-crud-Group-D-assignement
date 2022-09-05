@@ -1,5 +1,8 @@
 import { ApiProperty } from "@nestjs/swagger";
 import { IsDefined, IsInt, IsNotEmpty, IsOptional, IsString, MaxLength, MinLength } from "class-validator";
+import { Observable } from "rxjs";
+import { ManyToMany } from "typeorm";
+import { BookCategoryEntity } from "../category/category.entity";
 
 export class PatchBook {
     // constructor(parameters) {
@@ -48,4 +51,17 @@ export class PatchBook {
     @MaxLength(13)
     @IsOptional() @ApiProperty ({required: false, default:false})
     book_isbn?: string;
+
+    // @IsNotEmpty()
+    // // @IsString()
+    // @IsOptional() @ApiProperty ({required: false, default:false})
+    // book_category: string;
+    @IsOptional() @ApiProperty ({required: false, default:false})
+    @ManyToMany(() => BookCategoryEntity, (categories) => categories.book, {
+        cascade: true,
+        eager: true,
+      })
+
+    categories:[];
+    //  Observable<BookCategoryEntity[]>;
 }
