@@ -15,8 +15,9 @@ export class ExamEntity{
 //     @ManyToOne((type) => UserPostEntity, (user) => user.Center)
 //    Center_Name: UserPostEntity
 
-   @ManyToMany((type) => UserPostEntity, (user) => user.Center)
-   @JoinTable({name: "User_exam_Table"})
-   Center_Name: UserPostEntity
+   @ManyToMany(() => UserPostEntity, (User:UserPostEntity) => User.Center)
+//    @JoinTable({name: "User_exam_Table"})
+   User: UserPostEntity
+   
 }
 
