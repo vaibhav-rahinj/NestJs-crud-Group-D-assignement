@@ -5,9 +5,10 @@ import { BookController } from './book.controller';
 import { BookEntity } from './models/book.entity'
 
 import { BookCatEntity } from './category/category_book/bookcat.entity';
-import { BookCatModule } from './category/category_book/bookcat.module';
+// import { BookCatModule } from './category/category_book/bookcat.module';
 
 import { TypeOrmModule } from '@nestjs/typeorm';
+// import { BookCatEntity } from './category/category_book/bookcat.entity';
 
 
 @Module({

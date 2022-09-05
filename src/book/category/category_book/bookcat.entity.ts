@@ -15,21 +15,10 @@ export class BookCatEntity {
     id: number;
 
     @Column()
-    // @JoinColumn()
-    // @ManyToMany(()=> BookCategoryEntity, (category:BookCategoryEntity)=>category.book)
-    
-    // @IsNotEmpty()
-    // @IsInt()
     book:number;
 
     @Column()
-    // @JoinColumn()
-    // @ManyToMany(()=>BookEntity, 
-    // (book:BookEntity)=>book.category)
-    
-    // @IsNotEmpty()
-    // @IsInt()
-    category:number
+    category:number;
  
 }
 

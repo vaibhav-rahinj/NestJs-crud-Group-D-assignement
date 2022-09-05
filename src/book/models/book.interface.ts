@@ -7,5 +7,7 @@ export interface Book{
     price: number;
     book_image: string;
     book_isbn: string;
+    categories:any;
+    // book_category: string;
 
 }
