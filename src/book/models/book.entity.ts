@@ -1,9 +1,11 @@
-import { Column,  Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column,  Entity, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, PrimaryColumn, PrimaryGeneratedColumn } from "typeorm";
 
 import { IsNotEmpty, IsString, IsInt} from "class-validator";
 // import { BookCategoryEntity } from "./category/category.entity";
 // import { ForeignKeyMetadata } from "typeorm/metadata/ForeignKeyMetadata";
 import { BookCategoryEntity } from "../category/category.entity";
+import { type } from "os";
+import { Observable } from "rxjs";
 // import { Factory } from 'nestjs-seeder';
 // import {IsNotEmpty} from "@nestjs/common";
 
@@ -37,31 +39,30 @@ export class BookEntity {
     // category m-1 /
         // @ManyToMany(()=> BookCategoryEntity, (category:BookCategoryEntity)=>category.book)
         // category:BookCategoryEntity;
-        // @JoinTable({name:'category_id'})   
-    @ManyToMany(()=> BookCategoryEntity, (category:BookCategoryEntity)=>category.book)
-    // @JoinTable({name:'Book_Category'}) 
-    // @Column({name:"id"})
-    // @JoinTable({name: "book_category1"}) 
-    @JoinTable({
-        name: "bookcategory123", // table name for the junction table of this relation
-        // @Column()
-        // id:number,
-        joinColumn: {
-            name: "book",
-            referencedColumnName: "book_id",
-            foreignKeyConstraintName:"book"
-        },
-        inverseJoinColumn: {
-            name: "category",
-            referencedColumnName: "categoryId",
-            foreignKeyConstraintName:"category"
-        }
-    })
-    // @PrimaryGeneratedColumn()
-    // @PrimaryColumn() @IsNotEmpty() @IsInt() id:number
-    category:BookCategoryEntity[];
-   
+        // @JoinTable({name:'category_id'}) 
+        
+        
 
+
+    // @ManyToMany(()=> BookCategoryEntity, (category:BookCategoryEntity)=>category.book,
+    // {cascade:true,eager:true}
+    // // {onUpdate:'CASCADE',onDelete:'CASCADE'}
+    // )
+    // @JoinTable({
+    //     name: "bookcategory123", // table name for the junction table of this relation
+    //     joinColumn: {
+    //         name: "book",
+    //         referencedColumnName: "book_id",
+    //         foreignKeyConstraintName:"book"
+    //     },
+    //     inverseJoinColumn: {
+    //         name: "category",
+    //         referencedColumnName: "categoryId",
+    //         foreignKeyConstraintName:"category"
+    //     }
+    // })
+    // category:BookCategoryEntity[];
+   
     @Column()
     @IsNotEmpty()
     author: string ;
@@ -81,6 +82,26 @@ export class BookEntity {
     @IsNotEmpty()
     @IsString()
     book_isbn: string;
- 
+    
+    @IsNotEmpty()
+    @ManyToMany(() => BookCategoryEntity, (categories) => categories.book, {
+        // cascade: true,
+        cascade:["insert", "update", "remove"],
+        eager: true,
+      })
+      @JoinTable({name:"bookcategory123",
+      joinColumn: {
+        name: "book",
+        referencedColumnName: "book_id",
+        foreignKeyConstraintName:"book"
+    },
+    inverseJoinColumn: {
+        name: "category",
+        referencedColumnName: "categoryId",
+        foreignKeyConstraintName:"category"
+    }
+})
+    categories: Observable<BookCategoryEntity[]>;
+    // tempData: any[];
 }
 

@@ -2,13 +2,13 @@ import {  IsInt, IsNotEmpty,  IsString, MaxLength, MinLength } from 'class-valid
 
 export class BookCatModel {
   // @IsNotEmpty() @IsInt()
-  // id: number;
+  id?: number;
 
-@IsNotEmpty()
+// @IsNotEmpty()
   book:number;
  
 
-@IsNotEmpty()
+// @IsNotEmpty()
   category:number;
 
 }

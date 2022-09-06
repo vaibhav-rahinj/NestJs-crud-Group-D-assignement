@@ -1,7 +1,7 @@
 
 
 export interface BookCat{
-     // id: number;
+     id?: number;
     book:number;
     category:number
 }

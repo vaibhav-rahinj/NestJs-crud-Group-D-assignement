@@ -18,6 +18,7 @@ import {
 import { Observable } from 'rxjs';
 import { DeleteResult, UpdateResult } from 'typeorm';
 import { BookService } from './book.service';
+import { BookCategoryEntity } from './category/category.entity';
 import { BookCat } from './category/category_book/bookcat.interface';
 import { BookCatModel } from './category/category_book/bookcat.model';
 import { BookEntity } from './models/book.entity';
@@ -30,6 +31,7 @@ import { PatchBook } from './models/book.patch';
 @Controller('book')
 export class BookController {
   constructor(private bookService: BookService) {}
+  addBookData:object;
   //  imagepath: string='';
   // @Post()
   // @IsNotEmpty()
@@ -44,30 +46,68 @@ export class BookController {
 
   // trial
   @Post()
-  add(@Body() bookModel: BookModel): Observable<Book> {
+  add(@Body() bookModel: BookModel): Promise<BookEntity> {
+  // add(@Body() book: Book): Observable<BookEntity> {
+
     
-    console.log(bookModel);
+    // let abc = new BookEntity();
+  //   let addBookData = {
+  //     book_id:bookModel.book_id,
+  //     book_name:bookModel.book_name,
+  //     author:bookModel.author,
+  //     price:bookModel.price,
+  //     book_image:bookModel.book_image,
+  //     book_isbn:bookModel.book_isbn
+  // };
+
+
+    // console.log("controller",addBookData);
+    // console.log("controller 3 ", abc);
+    // console.log("controller 5 ", bookModel.categories);
+    
+    // let bookData = this.addBookData;
     // bookModel.book_image=this.imagepath;
-    return this.bookService.addBook(bookModel);
+    // let secondTableData = new BookCategoryEntity();
+    //  this.bookService.addBookCat(bookCatModel);
+    // let func = async function save() {
+      // return 
+      return this.bookService.addBook(bookModel);
+    // }
+    // func();
+    // console.log();
+    
+  
+    // func.book_id
+    // return this.bookService.addBook(book);
     // return this.bookService.addBook(bookModel,bookModel.book_image=this.imagepath);
   }
 
   // bookCat
    // third Table
-  @Post("/bookcat")
-  addBookCat(@Body() bookCatModel: BookCatModel): Observable<BookCat> {
+  // @Post()
+  // @Post("/bookcat")
+  // addBookCat(@Body() bookCatModel: BookCatModel): Observable<BookCat> {
   
-    console.log(bookCatModel);
-    return this.bookService.addBookCat(bookCatModel);
-  }
+  //   console.log(bookCatModel);
+    
+  //   return this.bookService.addBookCat(bookCatModel);
+  // }
 
  // third Table
   @Get("/bookcat")
+  // @Get()
   findAllBookCat(): Observable<BookCat[]> {
     console.log("function called");
     
     return this.bookService.findAllBookCat();
   }
+
+  // @Get()
+  // @Get('/bookcat/:book')
+  // // getSpecificStudent(@Param('id') id:number): Book {
+  // getSpecificBookCatId(@Param('book') book: number): Observable<BookCat> {
+  //   return this.bookService.getSpecificBookCatId(book);
+  // }
   //trial
 
   // @Post('/:add')

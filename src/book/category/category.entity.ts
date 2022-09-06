@@ -1,12 +1,13 @@
-import { Column,  Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column,  Entity, JoinColumn, ManyToMany, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 
 import { IsNotEmpty, IsString, IsInt} from "class-validator";
 import { BookEntity } from "../models/book.entity";
+import { Observable } from "rxjs";
 // import { Factory } from 'nestjs-seeder';
 // import {IsNotEmpty} from "@nestjs/common";
 
 @Entity('bookcategory1')
-export class BookCategoryEntity {
+export class BookCategoryEntity extends BaseEntity {
     @PrimaryGeneratedColumn()
     @IsInt()
     categoryId: number;
@@ -25,9 +26,8 @@ export class BookCategoryEntity {
     // book: any;
 
     // book one-M
-    @ManyToMany(()=> BookEntity, 
-    (book:BookEntity)=>book.category)
-    book:BookEntity[];
+    @ManyToMany(() =>BookEntity, (book) => book.categories)
+    book:Observable<BookEntity[]>;
     // @JoinColumn({name:'category_id'})
 
     // @ManyToOne(()=> BookEntity, 

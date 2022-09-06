@@ -1,34 +1,43 @@
-import { IsString } from 'class-validator';
+import { IsNotEmpty } from 'class-validator';
 import {
-  Column,
   Entity,
-  ManyToMany,
+  Column,
   PrimaryGeneratedColumn,
+  ManyToMany,
+  JoinTable,
 } from 'typeorm';
-import { Subject } from './subject.entity';
-@Entity()
+import { subjects } from './subject.entity';
+@Entity('student')
 export class student {
+  //@PrimaryGeneratedColumn('uuid')
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ default: '' })
+  @Column()
+  //@Field({ nullable: true })
   fname: string;
 
   @Column()
   lname: string;
 
   @Column()
-  Stud_email: string;
+  Stud_gender: string;
 
   @Column()
-  Stud_gender: string;
+  Stud_email: string;
 
   @Column()
   Stud_address: string;
 
-  // @ManyToMany(() => Subject, subjects => subjects.students)
-  // subjects: Promise<Subject[]>;
+  // @Column()
+  // Image: string;
 
-  @ManyToMany((type) => Subject, (subjects) => subjects.students)
-  subjects: Promise<Subject[]>;
+  @ManyToMany(() => subjects, (subject) => subject.students, {
+    cascade: true,
+    eager: true,
+  })
+  @JoinTable({
+    // name: 'Student_subject',
+  })
+  subjects: Promise<subjects[]>;
 }

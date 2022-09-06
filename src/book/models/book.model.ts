@@ -1,10 +1,12 @@
 import {  IsInt, IsNotEmpty,  IsString, MaxLength, MinLength } from 'class-validator';
-import { JoinColumn, ManyToMany, ManyToOne, OneToMany } from 'typeorm';
+import { Observable } from 'rxjs';
+import { BaseEntity, JoinColumn, ManyToMany, ManyToOne, OneToMany } from 'typeorm';
 import { BookCategoryEntity } from '../category/category.entity';
 import { BookEntity } from './book.entity';
 
-export class BookModel {
-  @IsNotEmpty() @IsInt()
+export class BookModel extends BaseEntity {
+  // @IsNotEmpty()
+  //  @IsInt()
   // @MinLength(1)
   // @MaxLensgth(6)
   book_id: number;
@@ -13,20 +15,11 @@ export class BookModel {
   @MinLength(3)
   @MaxLength(30) book_name: string;
   
-  // @OneToMany(()=> BookCategoryEntity, 
-  //   (category:BookCategoryEntity)=>category.book)
-  //   category:BookCategoryEntity[];
-  //   @JoinColumn({name:'category_id'})
-
   // /recent
   // @OneToMany(()=> BookEntity, 
   //   (book:BookEntity)=>book.category)
   //   book:BookEntity[];
   //   @JoinColumn({name:'category_id'})
-
-  // //category model
-  @ManyToMany(()=> BookCategoryEntity, (category:BookCategoryEntity)=>category.book)
-  category:BookCategoryEntity[];
 
   @IsNotEmpty() @IsString()
   @MinLength(3)
@@ -45,40 +38,12 @@ export class BookModel {
   @MinLength(13)
   @MaxLength(13) book_isbn: string;
 
+  @ManyToMany(() => BookCategoryEntity, (categories) => categories.book, {
+    cascade: true,
+    // eager: true,
+  })
+categories:[];
+// Promise<BookCategoryEntity[]>;
+// Observable<BookCategoryEntity[]>;
 
 }
-// export class PatchBook {
-//     // constructor(parameters) {
-
-//     // }
-
-//     // @IsNotEmpty()
-//     //  @IsInt()
-//      @IsDefined()
-//      book_id: number;
-
-//     // @IsNotEmpty()
-//     @IsDefined()
-//     //  @IsString()
-//       book_name?: string;
-
-//     // @IsNotEmpty()
-//     @IsDefined()
-//     //  @IsString()
-//       author?: string;
-
-//     // @IsNotEmpty()
-//     //  @IsNumber()
-//      @IsDefined()
-//       price?: number;
-
-//     // @IsNotEmpty()
-//     @IsDefined()
-//     //  @IsString() 
-//      book_isbn?: string;
-
-//     // @IsNotEmpty()
-//     //  @IsString()
-//      @IsDefined()
-//      book_image?: string;
-// }

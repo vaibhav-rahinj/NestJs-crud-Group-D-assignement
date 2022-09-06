@@ -23,6 +23,7 @@ export class EmpCrudController {
   @Post() create(@Body() employeePost: EmpCrud): Observable<EmpCrud> {
     return this.employeeService.createPost(employeePost);
   }
+  
   @Get() findAll(): Observable<EmpCrud[]> {
     return this.employeeService.findAllPosts();
   }
