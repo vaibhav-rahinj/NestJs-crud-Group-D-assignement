@@ -73,13 +73,7 @@ export class BookController {
       // return 
       return this.bookService.addBook(bookModel);
     // }
-    // func();
-    // console.log();
     
-  
-    // func.book_id
-    // return this.bookService.addBook(book);
-    // return this.bookService.addBook(bookModel,bookModel.book_image=this.imagepath);
   }
 
   // bookCat
