@@ -7,6 +7,7 @@ import { DepartmentService } from '../services/dep-crud.service';
 export class DepartmentController {
   constructor(private departmentService: DepartmentService) {}
 
+
   @Post()
   createDepartment(@Body() department: Department) {
     return this.departmentService.createDeparment(department);

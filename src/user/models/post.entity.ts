@@ -35,8 +35,9 @@ export class UserPostEntity{
 
     @Column()
     Country:string;
-    // @Column({nullable: true})
-    // User_img:string;
+
+    // @Column({nullable: true)
+    // Center_Id:number;
 
     // @OneToMany((type) => ExamEntity, (exam) => exam.Center_Name)
     // Center: ExamEntity[]

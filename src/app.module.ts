@@ -1,3 +1,4 @@
+
 import { BookModule } from './book/book.module';
 import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -28,6 +29,7 @@ import { StudentManagmentModule } from './student/student-managment.module';
       password: process.env.POSTGRES_PASSWORD,
       database: process.env.POSTGRES_DATABASE,
       autoLoadEntities: true,
+      entities: [EmpCrudEntity, Department],
       synchronize: false,
     }),
 

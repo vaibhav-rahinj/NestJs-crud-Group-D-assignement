@@ -6,5 +6,6 @@ export interface User{
     Gender?: string;
     State?:string;
     Country?:string;
+    // Center_Id?:number;
     // User_img?: string;
 }
